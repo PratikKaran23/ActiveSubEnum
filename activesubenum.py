@@ -1375,16 +1375,49 @@ def print_summary(results: ResultCollector, start: float):
 # ─── Wordlist & Resolvers ────────────────────────────────────────────────────
 
 def load_wordlist(path: str) -> List[str]:
-    if not path or not Path(path).exists():
-        if path:
-            console.print(f"  [yellow][!] Wordlist not found: {path} — using built-in[/yellow]")
-        else:
-            console.print("  [dim]No wordlist — using built-in ({} words)[/dim]".format(len(BUILTIN_WORDLIST)))
+    if not path:
+        console.print("  [dim]No wordlist — using built-in ({} words)[/dim]".format(len(BUILTIN_WORDLIST)))
         return BUILTIN_WORDLIST
+
+    if not Path(path).exists():
+        # Auto-download jhaddix-all.txt from GitHub Gist if not found
+        console.print(f"  [yellow][!] Wordlist not found: {path}[/yellow]")
+        downloaded_path = _auto_download_wordlist(path)
+        if downloaded_path and Path(downloaded_path).exists():
+            path = downloaded_path
+            console.print(f"  [green][+] Downloaded wordlist: {path}[/green]")
+        else:
+            console.print(f"  [yellow]    Falling back to built-in wordlist[/yellow]")
+            return BUILTIN_WORDLIST
+
     with open(path, errors="ignore") as f:
         words = [l.strip() for l in f if l.strip() and not l.startswith("#")]
     console.print(f"  [dim]Wordlist: {path} ({len(words):,} words)[/dim]")
     return words
+
+
+def _auto_download_wordlist(requested_path: str) -> Optional[str]:
+    """Attempt to download jhaddix-all.txt if it's the requested wordlist."""
+    import urllib.request
+
+    # Only auto-download for jhaddix-all.txt or paths that look like the default
+    basename = Path(requested_path).name
+    if "jhaddix" not in basename.lower() and "all.txt" not in basename.lower():
+        return None
+
+    dest_dir = Path("wordlists/external")
+    dest_path = dest_dir / "jhaddix-all.txt"
+    url = "https://gist.githubusercontent.com/jhaddix/86a06c5dc309d08580a018c66354a056/raw/all.txt"
+
+    try:
+        os.makedirs(dest_dir, exist_ok=True)
+        console.print(f"  [*] Downloading jhaddix-all.txt (~2M words)...")
+        console.print(f"    Source: {url}")
+        urllib.request.urlretrieve(url, str(dest_path))
+        return str(dest_path)
+    except Exception as e:
+        console.print(f"  [red]    Download failed: {e}[/red]")
+        return None
 
 
 def load_resolvers(path: str = "", resolver_file: str = "", refresh: bool = False) -> List[str]:
