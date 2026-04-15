@@ -469,6 +469,7 @@ def resolve_a(fqdn: str, pool: ResolverPool) -> Optional[List[str]]:
         pool.record_servfail(ip)
         return None
     except dns.resolver.NXDOMAIN:
+        latency = (time.time() - start) * 1000
         pool.record_result(ip, latency, "nxdomain")
         return []
     except dns.resolver.NoAnswer:
@@ -491,6 +492,7 @@ def resolve_aaaa(fqdn: str, pool: ResolverPool) -> Optional[List[str]]:
         pool.record_servfail(ip)
         return None
     except dns.resolver.NXDOMAIN:
+        latency = (time.time() - start) * 1000
         pool.record_result(ip, latency, "nxdomain")
         return []
     except dns.resolver.NoAnswer:
