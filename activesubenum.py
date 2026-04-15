@@ -32,7 +32,7 @@ import string
 import sys
 import time
 from collections import defaultdict
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import ThreadPoolExecutor, as_completed, wait
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Dict, List, Optional, Set, Tuple
@@ -718,8 +718,8 @@ class BruteForcer:
                 # Wait for at least one to finish
                 if not pending:
                     break
-                done, _ = concurrent.futures.wait(
-                    pending, return_when=concurrent.futures.FIRST_COMPLETED
+                done, _ = wait(
+                    pending, return_when=FIRST_COMPLETED
                 )
                 for fut in done:
                     word = pending.pop(fut)
