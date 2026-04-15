@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# Scan results (private data — never commit)
+results/*.txt
+results/*.json
+results/*.csv
+results/*.md
+!results/.gitkeep
+
+# Resolver cache (regenerated each run)
+.resolvers_cache.txt
+
+# Checkpoint files (session-specific)
+.checkpoint_*.json
+
+# External wordlists (too large for git)
+wordlists/external/
+wordlists/combined/
+
+# API keys / secrets
+.env
+*.env
+config.local.yaml
+
+# macOS
+.DS_Store
+.AppleDouble
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+nmap_test/
