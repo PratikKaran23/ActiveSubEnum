@@ -337,6 +337,7 @@ class ResolverPool:
         self._eviction_count = 0
         self._health_check_done = False
         self._last_result_type: Optional[str] = None  # "success" | "nxdomain" | "noanswer" | "timeout" | "servfail"
+        self._last_ip: Optional[str] = None  # IP of last resolver used (for rate monitor)
 
         for ip in self._resolvers:
             self._stats[ip] = ResolverStats(ip)
@@ -389,6 +390,7 @@ class ResolverPool:
         """Return (resolver, resolver_ip) using random selection."""
         active = self._active()
         ip = random.choice(active) if active else self._resolvers[0]
+        self._last_ip = ip
         r = dns.resolver.Resolver()
         r.nameservers = [ip]
         r.timeout = self.timeout
@@ -467,7 +469,7 @@ def resolve_a(fqdn: str, pool: ResolverPool) -> Optional[List[str]]:
         pool.record_servfail(ip)
         return None
     except dns.resolver.NXDOMAIN:
-        pool.record_success(ip, (time.time() - start) * 1000)
+        pool.record_result(ip, latency, "nxdomain")
         return []
     except dns.resolver.NoAnswer:
         pool.record_result(ip, (time.time() - start) * 1000, "noanswer")
@@ -489,7 +491,7 @@ def resolve_aaaa(fqdn: str, pool: ResolverPool) -> Optional[List[str]]:
         pool.record_servfail(ip)
         return None
     except dns.resolver.NXDOMAIN:
-        pool.record_success(ip, (time.time() - start) * 1000)
+        pool.record_result(ip, latency, "nxdomain")
         return []
     except dns.resolver.NoAnswer:
         pool.record_result(ip, (time.time() - start) * 1000, "noanswer")
@@ -699,13 +701,14 @@ class BruteForcer:
                     words_done += 1
                     r = f.result()
 
-                    # Rate limit monitoring — only log once per session
-                    if self.rate_monitor:
+                    # Rate limit monitoring — record per-query stats
+                    if self.rate_monitor and self.pool and self.pool._last_ip:
+                        ip = self.pool._last_ip
                         if r:
-                            self.rate_monitor.record_success(0)
-                        elif self.pool and self.pool._last_result_type not in ("success", "nxdomain", "noanswer"):
+                            self.rate_monitor.record_success(ip, 0.0)
+                        elif self.pool._last_result_type not in ("success", "nxdomain", "noanswer"):
                             # Only record real failures (timeout/servfail), not expected NXDOMAIN
-                            self.rate_monitor.record_failure()
+                            self.rate_monitor.record_failure(ip, self.pool._last_result_type.upper())
 
                         if self.rate_monitor.should_backoff() and not self._backoff_logged:
                             msg = self.rate_monitor.apply_backoff(console, threads_current)
