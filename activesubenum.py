@@ -691,25 +691,51 @@ class BruteForcer:
         words_done = 0
         threads_current = [self.cfg.threads]  # mutable for backoff adjustment
 
+        # Batching: submit in waves to avoid OOM with large wordlists.
+        # Max pending futures = threads * 10 (10 batches of work ahead).
+        BATCH_SIZE = self.cfg.threads * 10
+        batch = []
+        pending = {}
+
         with Progress(
             SpinnerColumn(), TextColumn("[progress.description]{task.description}"),
             BarColumn(), TaskProgressColumn(), console=console, transient=True,
         ) as prog:
             task = prog.add_task("[cyan]Resolving...", total=words_total)
-            with ThreadPoolExecutor(max_workers=threads_current[0]) as ex:
-                fs = {ex.submit(self._try, w): w for w in wordlist}
-                for f in as_completed(fs):
+            ex = ThreadPoolExecutor(max_workers=threads_current[0])
+            it = iter(wordlist)
+
+            while words_done < words_total:
+                # Fill batch while under limit
+                while len(pending) < BATCH_SIZE:
+                    try:
+                        w = next(it)
+                    except StopIteration:
+                        break
+                    fut = ex.submit(self._try, w)
+                    pending[fut] = w
+
+                # Wait for at least one to finish
+                if not pending:
+                    break
+                done, _ = concurrent.futures.wait(
+                    pending, return_when=concurrent.futures.FIRST_COMPLETED
+                )
+                for fut in done:
+                    word = pending.pop(fut)
                     prog.advance(task)
                     words_done += 1
-                    r = f.result()
+                    try:
+                        r = fut.result()
+                    except Exception:
+                        r = None
 
-                    # Rate limit monitoring — record per-query stats
+                    # Rate limit monitoring
                     if self.rate_monitor and self.pool and self.pool._last_ip:
                         ip = self.pool._last_ip
                         if r:
                             self.rate_monitor.record_success(ip, 0.0)
                         elif self.pool._last_result_type not in ("success", "nxdomain", "noanswer"):
-                            # Only record real failures (timeout/servfail), not expected NXDOMAIN
                             self.rate_monitor.record_failure(ip, self.pool._last_result_type.upper())
 
                         if self.rate_monitor.should_backoff() and not self._backoff_logged:
@@ -722,6 +748,8 @@ class BruteForcer:
                         fqdn, ips = r
                         self.results.add_sync(fqdn, ips, f"brute[{label}]")
                         found.add(fqdn)
+
+            ex.shutdown(wait=False)
 
         console.print(f"  [dim]→ {len(found)} found[/dim]")
         if self.pool:
