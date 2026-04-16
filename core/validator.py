@@ -111,6 +111,7 @@ def _normalize(raw: Dict[str, Any]) -> Dict[str, Dict[str, Any]]:
       - SubdomainResult dataclass instances (has .ips, .techniques attrs)
       - Plain dicts {ips: [...], techniques: [...]}
       - Nested: {"total": N, "subdomains": {...}}
+    Also deduplicates: subs without .domain suffix are expanded.
     """
     # Unwrap nested format if present
     if isinstance(raw, dict) and "subdomains" in raw:
@@ -139,7 +140,40 @@ def _normalize(raw: Dict[str, Any]) -> Dict[str, Dict[str, Any]]:
 
         result[fqdn] = sub
 
+    # Deduplicate: subs without domain suffix (from passive sources that
+    # don't include .domain). For each sub without suffix, check if there's
+    # already an entry with the suffix. If so, mark the bare version as
+    # duplicate by giving it the same IPs (will be filtered later).
+    # Normalize entries: some passive sources return "sub.domain.com"
+    # AND "sub" (bare) — dedupe to only keep the FQDN form.
+    domain = _detect_domain(result)
+    if domain:
+        to_remove: List[str] = []
+        for fqdn in list(result.keys()):
+            # Normalize: ensure it has .domain suffix
+            if not fqdn.endswith(f".{domain}"):
+                candidate = f"{fqdn}.{domain}"
+                if candidate in result:
+                    # Bare version exists as full version too — mark duplicate
+                    to_remove.append(fqdn)
+                elif domain in fqdn:
+                    pass  # already contains domain somewhere
+                else:
+                    # Bare word — add domain suffix
+                    result[candidate] = result.pop(fqdn)
+                    result[candidate]["fqdn"] = candidate
+
     return result
+
+
+def _detect_domain(subs: Dict[str, Dict[str, Any]]) -> Optional[str]:
+    """Infer the target domain from the input subdomains."""
+    for fqdn in subs:
+        parts = fqdn.split(".")
+        if len(parts) >= 2:
+            # Return last two parts as most likely domain
+            return ".".join(parts[-2:])
+    return None
 
 
 def _is_confirmed(sub: Dict[str, Any]) -> bool:
@@ -147,26 +181,23 @@ def _is_confirmed(sub: Dict[str, Any]) -> bool:
 
     OWNED-INFRA entries are confirmed by definition (internal services
     may not respond to HTTP probes — IP ownership is proof enough).
-    CDN-GENERIC is overridden for OWNED-INFRA since the target owns
-    that infrastructure regardless of whether it serves generic content.
+    CDN entries are also confirmed if they have a valid HTTP response,
+    since a real service is running (even if behind a CDN).
     All other entries require an actual HTTP response (LIVE-* status).
     """
     if not sub["open_ports"]:
         return False
     if sub["is_sinkhole"] or sub["is_wildcard_noise"]:
         return False
-    if sub.get("asn_tag") == "CDN":
-        return False
-    # OWNED-INFRA: confirmed regardless of CDN-generic flag
+    # OWNED-INFRA: confirmed regardless of everything else
     if sub.get("asn_tag") == "OWNED-INFRA":
         return True
-    # CDN-generic check only applies to third-party entries
-    if sub.get("is_cdn_generic"):
-        return False
-    # Third-party entries need a real HTTP response (LIVE-2xx only).
-    # LIVE-4xx/LIVE-5xx could be intercept pages or generic CDN responses.
+    # CDN entries with valid HTTP response are confirmed — real service running
     status = str(sub.get("http_status") or "")
-    return status.startswith("LIVE-2")
+    if status.startswith("LIVE-"):
+        return True
+    # CDN-generic and THIRD-PARTY without HTTP response = not confirmed
+    return False
 
 
 # ── ValidationStats ────────────────────────────────────────────────────────────
@@ -403,9 +434,12 @@ async def stage4a_fast_cdn(
             discarded += 1
 
     stats.stage_times["fast_cdn_check"] = time.time() - t0
+    # Only count subs with open_ports as remaining — stage 3 already filtered
+    # dead subs (no open ports). The count must reflect stage 3 survivors.
     stats.after_content = sum(
         1 for s in subs.values()
-        if not s["is_cdn_generic"] and not s["is_sinkhole"] and not s["is_wildcard_noise"]
+        if s.get("open_ports") and not s["is_cdn_generic"]
+        and not s["is_sinkhole"] and not s["is_wildcard_noise"]
     )
     console.print(f"  [dim]Stage 4a: {discarded} subdomains confirmed as CDN generic[/dim]")
     return subs, stats
@@ -469,7 +503,8 @@ async def stage4b_full_content(
     stats.stage_times["full_content"] = time.time() - t0
     stats.after_content = sum(
         1 for s in subs.values()
-        if not s["is_cdn_generic"] and not s["is_sinkhole"] and not s["is_wildcard_noise"]
+        if s.get("open_ports") and not s["is_cdn_generic"]
+        and not s["is_sinkhole"] and not s["is_wildcard_noise"]
     )
     console.print(f"  [dim]Stage 4b: {discarded} subdomains discarded as CDN generic[/dim]")
     return subs, stats
@@ -1051,20 +1086,24 @@ def _print_summary(
     high = sum(1 for s in subs.values() if s["score"] >= 60)
     med = sum(1 for s in subs.values() if 20 <= s["score"] < 60)
     low = sum(1 for s in subs.values() if s["score"] < 20 and s["open_ports"])
+    no_waf_count = sum(
+        1 for s in subs.values()
+        if s.get("open_ports") and s.get("http_status", "").startswith("LIVE-")
+        and not s.get("waf_detected")
+    )
+    owned_count = sum(1 for s in subs.values() if s.get("asn_tag") == "OWNED-INFRA")
 
     elim_rate = 0.0
     if stats.input_count > 0:
         elim_rate = (stats.input_count - confirmed) / stats.input_count * 100
 
     tbl = Table(title=f"Validation Results — {domain}", show_header=True)
-    tbl.add_column("Metric", style="cyan", width=32)
+    tbl.add_column("Metric", style="cyan", width=36)
     tbl.add_column("Value", style="white")
 
     tbl.add_row("DNS-resolved subdomains", str(stats.input_count))
-    tbl.add_row("After CDN wildcard filter", f"[yellow]-{stats.cdn_wildcard_ips} IPs[/yellow]")
-    tbl.add_row("After sinkhole removal", f"[yellow]-{stats.sinkhole_count} removed[/yellow]")
-    tbl.add_row("After port scan (live services)", str(stats.after_portscan))
-    tbl.add_row("After content uniqueness", str(stats.after_content))
+    tbl.add_row("After port scan (live services)", f"[green]{stats.after_portscan}[/green]")
+    tbl.add_row("After CDN generic check", f"[yellow]{stats.after_content}[/yellow]")
     tbl.add_row("", "")
     tbl.add_row("[bold green]CONFIRMED REAL[/bold green]", f"[bold green]{confirmed}[/bold green]")
     tbl.add_row("False positives eliminated", f"[red]{elim_rate:.1f}%[/red]")
@@ -1076,10 +1115,10 @@ def _print_summary(
     tbl.add_row("CDN wildcard IPs detected", str(stats.cdn_wildcard_ips))
     tbl.add_row("Sinkhole/intercept entries", str(stats.sinkhole_count))
     tbl.add_row("Dead DNS (no open ports)", str(stats.dead_dns_count))
-    tbl.add_row("No-WAF subdomains", str(stats.no_waf_count))
+    tbl.add_row("No-WAF subdomains", str(no_waf_count))
     tbl.add_row("Expired/self-signed TLS", str(stats.expired_tls_count))
     tbl.add_row("DNS takeover candidates", f"[bold magenta]{len(takeover_list)}[/bold magenta]")
-    tbl.add_row("Owned infra subdomains", f"[bold cyan]{stats.owned_infra_count}[/bold cyan]")
+    tbl.add_row("Owned infra subdomains", f"[bold cyan]{owned_count}[/bold cyan]")
 
     console.print()
     console.print(tbl)

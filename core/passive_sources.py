@@ -207,10 +207,17 @@ class ArgosDNSFile:
             elif sub == domain:
                 pass  # skip bare domain
             elif "." not in sub:
+                # Single-level: "www", "api" → add domain suffix
                 normalized.add(f"{sub}.{domain}")
             else:
-                # might be a subdomain without domain suffix
-                normalized.add(sub)
+                # Multi-level: "account.dev.policies.io"
+                # If it contains target domain somewhere, use as-is.
+                # If it's from a different domain (e.g. policies.io), skip it —
+                # ArgosDNS may return CNAME targets from other domains that
+                # point to target's infrastructure. These aren't target subdomains.
+                if domain in sub:
+                    normalized.add(sub)
+                # else: skip — "account.dev.policies.io" is not a manypets.com subdomain
 
         console.print(
             f"  [green][+][/green] ArgosDNS file: "
