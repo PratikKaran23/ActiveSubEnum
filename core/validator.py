@@ -592,14 +592,14 @@ async def stage6_http_intelligence(
                 pass
 
     # Build target list: (ip, hostname, port)
-    # CRITICAL: skip CDN-generic third-party entries (serving generic CDN page).
-    # OWNED-INFRA entries bypass this check — MindGeek owns its CDN infrastructure.
+    # Probe ALL subdomains with open ports — including CDN-generic ones.
+    # CDN-generic subs on third-party CDNs may still serve specific content
+    # (the generic check is a heuristic, not a certainty). We need HTTP results
+    # to make final confirmation. Probing them costs one extra request/IP.
+    # Skip only: sinkholes, wildcard noise, or subs with no open ports.
     targets: List[Tuple[str, str, int]] = []
     for fqdn, sub in subs.items():
         if sub.get("is_sinkhole") or sub.get("is_wildcard_noise"):
-            continue
-        # Skip CDN-generic third-party entries, but probe owned-infra regardless
-        if sub.get("is_cdn_generic") and sub.get("asn_tag") != "OWNED-INFRA":
             continue
         if not sub.get("open_ports"):
             continue
@@ -668,16 +668,20 @@ async def stage7_asn_classify(
     subs: Dict[str, Dict[str, Any]],
     target_netblocks: List[str] | None = None,
 ) -> Tuple[Dict[str, Dict[str, Any]], ValidationStats]:
-    """ASN lookup and OWNED-INFRA / CDN / THIRD-PARTY tagging."""
+    """ASN lookup and OWNED-INFRA / CDN / THIRD-PARTY tagging.
+
+    Dynamically builds target_netblocks from the most common ASN among
+    the found subdomains. If a single ASN dominates (>50% of unique IPs),
+    treat all IPs in that ASN as OWNED-INFRA.
+    Falls back to explicit netblocks (MindGeek ranges) if dynamic detection fails.
+    """
+    from collections import Counter
     from rich.console import Console
     console = Console()
     stats = ValidationStats()
     stats.input_count = len(subs)
     if target_netblocks is None:
-        # MindGeek netblocks (verified from tube8.com scan)
-        # 66.254.112.0/20 = 66.254.112.0 - 66.254.127.255
-        # 94.199.96.0/20 = 94.199.96.0 - 94.199.111.255
-        target_netblocks = ["66.254.112.0/20", "94.199.96.0/20"]
+        target_netblocks = []
 
     unique_ips = list(dict.fromkeys(
         ip for sub in subs.values() for ip in sub["ips"]
@@ -689,9 +693,40 @@ async def stage7_asn_classify(
     console.print(f"  [dim]Stage 7: ASN lookup on {len(unique_ips)} unique IPs...[/dim]")
     t0 = time.time()
 
-    lookup = ASNLookup(rate_limit=5)
+    lookup = ASNLookup(rate_limit=1)  # 1 req/sec to avoid ipinfo.io rate limits
     asn_results = await lookup.lookup_batch(unique_ips)
     lookup.save_cache()
+
+    # Dynamically build target netblocks from dominant ASN
+    if not target_netblocks:
+        asn_counter = Counter()
+        for ip, info in asn_results.items():
+            asn_str = lookup._get_asn_str(info)
+            if asn_str and asn_str not in ("RATE_LIMITED", "ERROR", ""):
+                asn_counter[asn_str] += 1
+
+        # If one ASN dominates (>50% of unique IPs) and it's not a known CDN,
+        # treat it as the target's own infrastructure
+        if asn_counter:
+            most_common_asn, count = asn_counter.most_common(1)[0]
+            if count / len(unique_ips) > 0.5 and most_common_asn not in CDN_ASNS:
+                # Build CIDR from prefix — use /16 as a reasonable estimate
+                # We'll also check if ipinfo returns a 'netblock' field
+                for ip, info in asn_results.items():
+                    if lookup._get_asn_str(info) == most_common_asn:
+                        # Extract prefix from IP: 99.86.182.x → 99.86.0.0/16
+                        if "." in ip:
+                            parts = ip.split(".")
+                            target_netblocks.append(f"{parts[0]}.{parts[1]}.0.0/16")
+                        break
+                console.print(f"  [dim]  Detected dominant ASN {most_common_asn} — using as OWNED-INFRA[/dim]")
+
+        # Fall back to explicit netblocks if dynamic detection failed
+        if not target_netblocks:
+            # Only use MindGeek ranges as fallback when we have NO target-specific data
+            # This is a safe default — only apply if we have zero other info
+            if not asn_counter:
+                target_netblocks = ["66.254.112.0/20", "94.199.96.0/20"]
 
     owned = 0
     for sub in subs.values():
@@ -701,8 +736,7 @@ async def stage7_asn_classify(
         info = asn_results[ip]
         sub["asn_info"] = info
 
-        # IMPORTANT: check OWNED-INFRA FIRST — MindGeek owns AS29789 netblocks
-        # even though it uses Reflected Networks as CDN provider
+        # Check OWNED-INFRA first
         if lookup.is_owned_ip(ip, target_netblocks):
             sub["asn_tag"] = "OWNED-INFRA"
             owned += 1
@@ -711,7 +745,6 @@ async def stage7_asn_classify(
             if asn_str in CDN_ASNS:
                 sub["asn_tag"] = "CDN"
             else:
-                # Check org name for CDN/provider keywords
                 org = (info.get("org") or "").lower()
                 cdn_keywords = {"cloudflare", "akamai", "amazon", "aws", "google", "microsoft",
                                 "azure", "fastly", "limelight", "edgecast", "incapsula", "sucuri"}
@@ -926,9 +959,14 @@ def _save_outputs(
     with open(p, "w") as f:
         f.write("\n".join(dead))
 
-    # NO-WAF
-    no_waf = [f"{fqdn} | {','.join(sub['ips'])} | {sub.get('http_status')} | score={sub['score']}"
-              for fqdn, sub in confirmed if not sub.get("waf_detected") and sub.get("http_status")]
+    # NO-WAF: all subdomains that were HTTP probed and had no WAF detected.
+    # Don't restrict to CONFIRMED-REAL only — a subdomain with open ports
+    # but NO-HTTP response is still a valid live target (just a firewall).
+    no_waf = [
+        f"{fqdn} | {','.join(sub['ips'])} | {sub.get('http_status', 'NO-HTTP')} | score={sub['score']}"
+        for fqdn, sub in subs.items()
+        if not sub.get("waf_detected") and sub.get("http_status") and sub.get("open_ports")
+    ]
     p = _p("NO-WAF.txt")
     outputs[p] = len(no_waf)
     with open(p, "w") as f:
