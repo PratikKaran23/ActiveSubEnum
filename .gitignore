@@ -48,4 +48,5 @@ config.local.yaml
 
 # Logs
 *.log
-nmap_test/
+nmap_test/results/
+*.txt
