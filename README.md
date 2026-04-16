@@ -40,20 +40,25 @@ pip install -r requirements.txt
 ## Quick Start
 
 ```bash
-# Deep scan — all 12 techniques, largest wordlist
+# Deep scan — standard profile (works on any connection)
 python3 activesubenum.py \
   -d target.com \
   -w wordlists/external/jhaddix-all.txt \
   --techniques all \
-  -t 200 \
-  --timeout 3 \
-  --depth 3 \
-  --max-rate 800 \
-  --jitter 50 \
+  --profile normal \
   --refresh-resolvers \
   --fast-validate \
   -o results/target.com-deep.json \
   --validate-output results/target.com/
+
+# Home broadband / shared VPS — light profile
+python3 activesubenum.py -d target.com -w wordlist.txt --profile light --techniques all
+
+# Dedicated server — fast profile
+python3 activesubenum.py -d target.com -w wordlist.txt --profile fast --techniques all
+
+# Pro hunter — maximum throughput
+python3 activesubenum.py -d target.com -w wordlist.txt --profile hunter --techniques all --include-heavy
 
 # Resume interrupted scan
 python3 activesubenum.py -d target.com -w wordlist.txt --resume
@@ -61,6 +66,21 @@ python3 activesubenum.py -d target.com -w wordlist.txt --resume
 # Validate existing results only
 python3 activesubenum.py --validate-only --input results.json -d target.com
 ```
+
+---
+
+## Connection Profiles
+
+| Profile  | Threads | Rate   | Jitter | Best For |
+|----------|---------|--------|--------|----------|
+| `--profile light`  | 20  | 100 q/s | 200ms | Home broadband, shared VPS |
+| `--profile normal` | 50 | 300 q/s | 100ms | Good VPS (default) |
+| `--profile fast`   | 100| 600 q/s | 50ms  | Dedicated server |
+| `--profile hunter` | 200| 1000 q/s| 0ms   | High-end datacenter VPS |
+
+By default (`--techniques all`) runs **light + medium techniques only** (DNS-based).
+Heavy HTTP techniques (vhost/cors/tlssni) are skipped to reduce network load.
+Add `--include-heavy` or `--techniques all+heavy` to enable them.
 
 ---
 
@@ -147,8 +167,10 @@ This fetches:
 --timeout             DNS timeout in seconds (default: 3)
 --techniques          Comma-separated or 'all'
 --depth               Recursive enumeration depth (default: 2)
---max-rate            Max queries per second
---jitter              Random delay per query in ms
+--max-rate            Max queries per second (default: 300)
+--jitter              Random delay per query in ms (default: 100)
+--profile             Connection preset: light/normal/fast/hunter
+--include-heavy       Include HTTP techniques (vhost/cors/tlssni) with --techniques all
 --ip-ranges           IP ranges for TLS SNI probing
 --refresh-resolvers   Force fresh resolver fetch
 --resume              Resume from checkpoint

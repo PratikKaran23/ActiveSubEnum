@@ -172,10 +172,37 @@ RECURSIVE_SEEDS = [
     "data", "prod", "qa", "old", "new",
 ]
 
+# High-value words for targeted probes (IPv6, recursive, etc.)
+HIGH_VALUE_WORDS = [
+    "api", "dev", "staging", "admin", "internal", "vpn",
+    "mail", "smtp", "pop", "imap", "ftp", "ssh", "vpn",
+    "crm", "erp", "dashboard", "portal", "login", "auth",
+    "cdn", "static", "assets", "media", "img", "assets",
+    "db", "database", "mysql", "postgres", "mongo", "redis",
+    "cache", "memcached", "queue", "worker", "jobs", "celery",
+    "ci", "cd", "jenkins", "gitlab", "github", "pipeline",
+    "grafana", "kibana", "prometheus", "monitor", "metrics",
+    "k8s", "kubernetes", "docker", "registry", "helm",
+    "backup", "bak", "archive", "old", "legacy", "test",
+    "demo", "sandbox", "playground", "preview", "staging",
+    "prod", "production", "uat", "qa", "load", "perf",
+    "search", "elastic", "solr", "sphinx",
+    "webmail", "owa", "autodiscover",
+    "v2", "v3", "v4", "api-v2", "api-v3",
+    "mobile", "app", "widget", "embed",
+]
+
 CHAOS_QUERIES = [
     "version.bind", "version.server", "hostname.bind",
     "id.server", "authors.bind", "build.bind",
 ]
+
+# Technique classification by resource cost
+TECH_CATEGORY = {
+    "light": {"zonetransfer", "nsec", "cachesnoop", "chaos", "caa"},
+    "medium": {"bruteforce", "permutation", "ipv6", "recursive"},
+    "heavy": {"vhost", "cors", "tlssni"},
+}
 
 # ─── Config ──────────────────────────────────────────────────────────────────
 
@@ -184,8 +211,8 @@ class Config:
     domain: str
     wordlist_path: str = ""
     resolvers: List[str] = field(default_factory=lambda: list(DEFAULT_RESOLVERS))
-    threads: int = 100
-    timeout: int = 3
+    threads: int = 50          # reduced from 100 — works on any connection
+    timeout: int = 5            # increased from 3 — more forgiving on slow links
     techniques: List[str] = field(default_factory=list)
     ip_ranges: List[str] = field(default_factory=list)
     output: str = ""
@@ -211,7 +238,7 @@ class Config:
     # Part 7: resume
     resume: bool = False
     resume_file: str = ""
-    # Part 7: skip wordlist cleaning
+    # Part 7: skip wordlist clean
     skip_clean: bool = False
     # Part 7: permutation wordlist
     permutation_wordlist: str = ""
@@ -219,11 +246,15 @@ class Config:
     annotate: bool = False
     # Part 10: HTTP probe timeout
     http_timeout: int = 5
-    # Rate limit & performance
-    max_rate: int = 0       # hard cap queries/second across all threads
-    jitter: int = 0         # random delay (ms) per query per thread
-    shuffle: bool = False   # randomize wordlist order
+    # Rate limit & performance (sensible defaults)
+    max_rate: int = 300       # 300 q/s — works on home broadband
+    jitter: int = 100         # 100ms random delay — smoothes burst patterns
+    shuffle: bool = False     # randomize wordlist order
     resolvers_file: str = ""  # explicit resolver file
+    # Resource profiles
+    profile: str = ""         # light | normal | fast | hunter
+    # Heavy technique opt-in
+    include_heavy: bool = False  # include vhost/cors/tlssni in "all"
 
 # ─── Result Collector ────────────────────────────────────────────────────────
 
@@ -1019,18 +1050,18 @@ class IPv6Enumerator:
             pass
 
         if not root_has_aaaa:
-            # No AAAA on root — use small curated list instead of full wordlist
-            wordlist = wordlist[:50]
+            # No AAAA on root — use high-value words + curated subset only
+            wordlist = list(dict.fromkeys(wordlist[:500] + HIGH_VALUE_WORDS))
             console.print(
                 f"\n[bold blue][06][/bold blue] IPv6 AAAA Enumeration — "
-                f"[cyan]{len(wordlist):,}[/cyan] words (root has no AAAA — using curated list)"
+                f"[cyan]{len(wordlist):,}[/cyan] words (high-value only — root has no AAAA)"
             )
         else:
-            # Root has AAAA — cap at 50K to avoid OOM
-            wordlist = wordlist[:50000]
+            # Root has AAAA — cap at 10K + always include high-value words
+            wordlist = list(dict.fromkeys(wordlist[:10000] + HIGH_VALUE_WORDS))
             console.print(
                 f"\n[bold blue][06][/bold blue] IPv6 AAAA Enumeration — "
-                f"[cyan]{len(wordlist):,}[/cyan] words (root has AAAA — capping at 50K)"
+                f"[cyan]{len(wordlist):,}[/cyan] words (capped from full list)"
             )
 
         found: Set[str] = set()
@@ -1666,11 +1697,22 @@ EXAMPLES:
     p.add_argument("-d", "--domain", required=False, help="Target domain (e.g. example.com)")
     p.add_argument("-w", "--wordlist", default="", help="Path to wordlist")
     p.add_argument("-r", "--resolvers", default="", help="Path to custom resolver IPs file")
-    p.add_argument("-t", "--threads", type=int, default=100, help="Threads (default: 100)")
-    p.add_argument("--timeout", type=int, default=3, help="DNS timeout seconds (default: 3)")
+    p.add_argument("-t", "--threads", type=int, default=50, help="Threads (default: 50)")
+    p.add_argument("--timeout", type=int, default=5, help="DNS timeout seconds (default: 5)")
     p.add_argument(
         "--techniques", default="all",
-        help="Comma-separated techniques or 'all' (default: all)"
+        help="Comma-separated techniques or 'all' (default: all). "
+             "'all+heavy' includes HTTP techniques (vhost/cors/tlssni)."
+    )
+    p.add_argument(
+        "--profile", dest="profile", default="", choices=["light", "normal", "fast", "hunter"],
+        help="Connection profile — overrides threads/max-rate/jitter. "
+             "light=20t/100qps, normal=50t/300qps (default), "
+             "fast=100t/600qps, hunter=200t/1000qps"
+    )
+    p.add_argument(
+        "--include-heavy", dest="include_heavy", action="store_true",
+        help="Include heavy HTTP techniques (vhost/cors/tlssni) with --techniques all"
     )
     p.add_argument(
         "--ip-ranges", default="",
@@ -1708,10 +1750,10 @@ EXAMPLES:
     p.add_argument("--resolvers-file", dest="resolvers_file", default="",
                    help="Use specific resolver file (bypasses auto-refresh)")
     # Rate limit & performance
-    p.add_argument("--max-rate", dest="max_rate", type=int, default=0,
-                   help="Hard cap on DNS queries per second across all threads (0=unlimited)")
-    p.add_argument("--jitter", type=int, default=0,
-                   help="Add random delay (ms) per query per thread for stealth (default: 0)")
+    p.add_argument("--max-rate", dest="max_rate", type=int, default=300,
+                   help="Hard cap on DNS queries per second (default: 300)")
+    p.add_argument("--jitter", type=int, default=100,
+                   help="Random delay (ms) per query for burst smoothing (default: 100)")
     p.add_argument("--shuffle", dest="shuffle", action="store_true",
                    help="Randomize wordlist order before brute forcing")
     # Part 7: resume
@@ -1967,13 +2009,55 @@ def main():
         permutation_wordlist=args.permutation_wordlist,
         annotate=args.annotate,
         http_timeout=args.http_timeout,
-        max_rate=getattr(args, 'max_rate', 0),
-        jitter=getattr(args, 'jitter', 0),
+        max_rate=getattr(args, 'max_rate', 300),
+        jitter=getattr(args, 'jitter', 100),
         shuffle=getattr(args, 'shuffle', False),
         resolvers_file=getattr(args, 'resolvers_file', ''),
+        profile=getattr(args, 'profile', ''),
+        include_heavy=getattr(args, 'include_heavy', False),
     )
 
-    # Opsec mode auto-selects stealth techniques and disables noisy ones
+    # ── Apply connection profile overrides ──────────────────────────────────────
+    if cfg.profile:
+        PROFILE_DEFAULTS = {
+            "light":  {"threads": 20,  "max_rate": 100,  "jitter": 200},
+            "normal": {"threads": 50,  "max_rate": 300,  "jitter": 100},
+            "fast":   {"threads": 100, "max_rate": 600,  "jitter": 50},
+            "hunter": {"threads": 200, "max_rate": 1000, "jitter": 0},
+        }
+        p = PROFILE_DEFAULTS.get(cfg.profile, PROFILE_DEFAULTS["normal"])
+        cfg.threads = p["threads"]
+        cfg.max_rate = p["max_rate"]
+        cfg.jitter = p["jitter"]
+        if cfg.profile == "hunter":
+            console.print(
+                "\n[bold red][!] Hunter mode — high bandwidth usage[/bold red]\n"
+            )
+
+    # ── Apply heavy technique filter ─────────────────────────────────────────────
+    # "all" by default excludes heavy techniques (vhost/cors/tlssni).
+    # They require HTTP probes which are much more network-intensive.
+    if "all" in cfg.techniques and not cfg.include_heavy:
+        # Strip heavy techniques from "all"
+        light_medium = TECH_CATEGORY["light"] | TECH_CATEGORY["medium"]
+        cfg.techniques = sorted(light_medium)
+        console.print(
+            "\n[dim][*] Techniques: light + medium ({}{}{})[/dim]\n"
+            "[dim]    Heavy techniques skipped (vhost/cors/tlssni).[/dim]\n"
+            "[dim]    Use --include-heavy or --techniques all+heavy to enable.[/dim]\n".format(
+                ", ".join(sorted(TECH_CATEGORY["light"])[:3]),
+                ", ", ", ".join(sorted(TECH_CATEGORY["medium"])[:3]),
+            )
+        )
+    elif "all" in cfg.techniques and cfg.include_heavy:
+        cfg.techniques = sorted(TECH_CATEGORY["light"] | TECH_CATEGORY["medium"] | TECH_CATEGORY["heavy"])
+
+    # Also handle "all+heavy" syntax in --techniques directly
+    if "all+heavy" in cfg.techniques:
+        cfg.techniques = sorted(TECH_CATEGORY["light"] | TECH_CATEGORY["medium"] | TECH_CATEGORY["heavy"])
+        cfg.include_heavy = True
+
+    # ── Opsec mode ──────────────────────────────────────────────────────────────
     if cfg.opsec_mode:
         console.print(
             "[bold yellow][OPSEC][/bold yellow] Running in stealth mode. "
