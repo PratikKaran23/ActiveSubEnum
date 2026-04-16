@@ -980,9 +980,24 @@ def _save_outputs(
     with open(p, "w") as f:
         f.write("\n".join(exp))
 
-    # TAKEOVER
-    take = [f"{fqdn} | {sub.get('cname')} | {sub.get('takeover_service')} | score={sub['score']}"
-            for fqdn, sub in confirmed if fqdn in takeover_list]
+    # TAKEOVER: include both CNAME-based takeover candidates AND
+    # passive NXDOMAIN subs (found historically but no longer resolving =
+    # high-value dangling DNS takeover candidates).
+    # Format: subdomain | cname_target | service | reason
+    take: List[str] = []
+    for fqdn, sub in subs.items():
+        if fqdn in takeover_list:
+            # CNAME-based takeover
+            take.append(
+                f"{fqdn} | {sub.get('cname', 'N/A')} | "
+                f"{sub.get('takeover_service', 'N/A')} | score={sub['score']}"
+            )
+        elif sub.get("ips", []) == ["[passive-nxdomain]"]:
+            # Passive NXDOMAIN = dangling DNS = potential takeover
+            take.append(
+                f"{fqdn} | N/A (deleted) | DANGLING-DNS | "
+                f"previously discovered but no longer resolves"
+            )
     p = _p("TAKEOVER-CANDIDATES.txt")
     outputs[p] = len(take)
     with open(p, "w") as f:

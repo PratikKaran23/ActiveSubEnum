@@ -260,6 +260,7 @@ class Config:
     argos_key: str = ""               # ArgosDNS API key (costs requests)
     argos_max_requests: int = 5       # max API requests per scan
     skip_passive: bool = False        # skip all passive sources (crt.sh + ArgosDNS)
+    skip_active: bool = False         # skip all active techniques (run passive + validation only)
 
 # ─── Result Collector ────────────────────────────────────────────────────────
 
@@ -1856,6 +1857,10 @@ EXAMPLES:
                         "Set higher for large domains. Always shows cost estimate first.")
     p.add_argument("--skip-passive", dest="skip_passive", action="store_true",
                    help="Skip all passive sources (crt.sh + ArgosDNS). Not recommended — passive is free intel.")
+    p.add_argument("--skip-active", dest="skip_active", action="store_true",
+                   help="Skip all active techniques (brute force, permutation, etc.). "
+                        "Runs Phase 0 (passive) + DNS resolution + validation only. "
+                        "Fastest when you have --passive-list export file.")
     return p.parse_args()
 
 # ─── Main ────────────────────────────────────────────────────────────────────
@@ -2085,6 +2090,7 @@ def main():
         argos_key=(os.environ.get("ARGOS_API_KEY") or getattr(args, 'argos_key', '')),
         argos_max_requests=getattr(args, 'argos_max_requests', 5),
         skip_passive=getattr(args, 'skip_passive', False),
+        skip_active=getattr(args, 'skip_active', False),
     )
 
     # ── Apply connection profile overrides ──────────────────────────────────────
@@ -2222,36 +2228,89 @@ def main():
             "\n[dim]Passive intelligence skipped (--skip-passive)[/dim]"
         )
 
-    # ── Resolve passive subdomains (Phase 0 → live IPs) ─────────────────────────
+    # ── Resolve passive FQDNs directly (NOT as brute-force words) ─────────────────
+    # Multi-level subs like "admin.dev.policies.io.manypets.com" must be resolved
+    # as full FQDNs, not stripped prefixes. BruteForcer adds .domain suffix,
+    # so "admin.dev.policies.io" → "admin.dev.policies.io.manypets.com" resolves
+    # the wrong name. Use a dedicated resolver that resolves exact FQDNs.
     if passive_subs and not cfg.skip_passive:
         console.print(
-            f"\n[bold blue][P1][/bold blue] Resolving "
+            f"\n[bold blue][P1][/bold blue] DNS resolving "
             f"{len(passive_subs):,} passive subdomains..."
         )
-        passive_wordlist = [
-            s.replace(f".{cfg.domain}", "")
-            for s in passive_subs
-            if cfg.domain in s
-        ]
-        passive_bf = BruteForcer(cfg, pool, wc, results)
-        passive_found = passive_bf.run(passive_wordlist, label="P1")
-        found |= passive_found
-        console.print(
-            f"  [dim]→ {len(passive_found):,} passive subdomains "
-            f"confirmed live via DNS[/dim]"
-        )
 
-        # Tag NXDOMAIN passive subs as takeover candidates
-        live_fqdns = {
-            f"{w}.{cfg.domain}"
-            for w in passive_wordlist
-            if results.found.get(f"{w}.{cfg.domain}", {}).get("ips", []) != ["[passive-unresolved]"]
-        }
-        nxdomain_passive = passive_subs - live_fqdns
-        if nxdomain_passive:
+        fqdns_to_resolve = sorted(passive_subs)
+        resolved_fqdns: Set[str] = set()
+        nxdomain_fqdns: Set[str] = set()
+        BATCH_SIZE = cfg.threads * 10
+
+        with Progress(
+            SpinnerColumn(),
+            TextColumn("[progress.description]{task.description}"),
+            BarColumn(),
+            TaskProgressColumn(),
+            console=console,
+            transient=True,
+        ) as prog:
+            task = prog.add_task(
+                f"[cyan]Resolving {len(fqdns_to_resolve):,} passive FQDNs...[/cyan]",
+                total=len(fqdns_to_resolve),
+            )
+            ex = ThreadPoolExecutor(max_workers=cfg.threads)
+            pending: Dict[object, str] = {}
+            it = iter(fqdns_to_resolve)
+
+            while True:
+                # Fill batch
+                while len(pending) < BATCH_SIZE:
+                    try:
+                        fqdn = next(it)
+                    except StopIteration:
+                        break
+
+                    def _resolve_fqdn(f: str) -> Tuple[str, Optional[List[str]]]:
+                        ips = resolve_a(f, pool)
+                        if ips:
+                            return f, ips
+                        return f, None
+
+                    fut = ex.submit(_resolve_fqdn, fqdn)
+                    pending[fut] = fqdn
+
+                if not pending:
+                    break
+                done, _ = wait(pending, return_when=FIRST_COMPLETED)
+                for fut in done:
+                    fqdn = pending.pop(fut)
+                    prog.advance(task)
+                    try:
+                        _, ips = fut.result()
+                    except Exception:
+                        ips = None
+
+                    if fqdn in results.found:
+                        if ips:
+                            results.found[fqdn]["ips"] = ips
+                            resolved_fqdns.add(fqdn)
+                        else:
+                            # NXDOMAIN — mark for takeover check
+                            results.found[fqdn]["ips"] = ["[passive-nxdomain]"]
+                            nxdomain_fqdns.add(fqdn)
+                    elif ips:
+                        results.add_sync(fqdn, ips, "passive-resolved")
+                        resolved_fqdns.add(fqdn)
+                        found.add(fqdn)
+
+            ex.shutdown(wait=False)
+
+        console.print(
+            f"  [green][+][/green] {len(resolved_fqdns):,} passive subs "
+            f"resolved to real IPs"
+        )
+        if nxdomain_fqdns:
             console.print(
-                f"  [yellow][!] {len(nxdomain_passive):,} passive subs "
-                f"no longer resolve → check TAKEOVER-CANDIDATES[/yellow]"
+                f"  [yellow][!][/yellow] {len(nxdomain_fqdns):,} passive subs "
+                f"NXDOMAIN → potential takeover candidates"
             )
 
     # Rate limit monitor
@@ -2292,89 +2351,95 @@ def main():
     def run(name: str) -> bool:
         return name in cfg.techniques or "all" in cfg.techniques
 
-    # 01 — Brute Force
-    if run("bruteforce"):
-        if _scan_interrupted:
-            _finish(results, start, cfg)
-        bf = BruteForcer(cfg, pool, wc, results, rate_monitor, checkpoint_manager)
-        found |= bf.run(wordlist)
+    # ── Skip active techniques when --skip-active ─────────────────────────────────
+    if cfg.skip_active:
+        console.print(
+            "\n[dim][*] Active techniques skipped (--skip-active)[/dim]"
+        )
+    else:
+        # 01 — Brute Force
+        if run("bruteforce"):
+            if _scan_interrupted:
+                _finish(results, start, cfg)
+            bf = BruteForcer(cfg, pool, wc, results, rate_monitor, checkpoint_manager)
+            found |= bf.run(wordlist)
 
-    # 02 — Permutation
-    if run("permutation"):
-        if _scan_interrupted:
-            _finish(results, start, cfg)
-        pe = PermutationEngine()
-        found |= pe.run(found, cfg, pool, wc, results)
+        # 02 — Permutation
+        if run("permutation"):
+            if _scan_interrupted:
+                _finish(results, start, cfg)
+            pe = PermutationEngine()
+            found |= pe.run(found, cfg, pool, wc, results)
 
-    # 03 — Zone Transfer
-    if run("zonetransfer"):
-        if _scan_interrupted:
-            _finish(results, start, cfg)
-        zt = ZoneTransfer(cfg, pool, results)
-        found |= zt.run()
+        # 03 — Zone Transfer
+        if run("zonetransfer"):
+            if _scan_interrupted:
+                _finish(results, start, cfg)
+            zt = ZoneTransfer(cfg, pool, results)
+            found |= zt.run()
 
-    # 04 — NSEC Walking
-    if run("nsec"):
-        if _scan_interrupted:
-            _finish(results, start, cfg)
-        nw = NSECWalker(cfg, pool, results)
-        found |= nw.run()
+        # 04 — NSEC Walking
+        if run("nsec"):
+            if _scan_interrupted:
+                _finish(results, start, cfg)
+            nw = NSECWalker(cfg, pool, results)
+            found |= nw.run()
 
-    # 05 — Cache Snooping
-    if run("cachesnoop"):
-        if _scan_interrupted:
-            _finish(results, start, cfg)
-        cs = CacheSnooper(cfg, results)
-        found |= cs.run(found)
+        # 05 — Cache Snooping
+        if run("cachesnoop"):
+            if _scan_interrupted:
+                _finish(results, start, cfg)
+            cs = CacheSnooper(cfg, results)
+            found |= cs.run(found)
 
-    # 06 — IPv6 AAAA
-    if run("ipv6"):
-        if _scan_interrupted:
-            _finish(results, start, cfg)
-        iv6 = IPv6Enumerator(cfg, pool, wc, results)
-        found |= iv6.run(wordlist)
+        # 06 — IPv6 AAAA
+        if run("ipv6"):
+            if _scan_interrupted:
+                _finish(results, start, cfg)
+            iv6 = IPv6Enumerator(cfg, pool, wc, results)
+            found |= iv6.run(wordlist)
 
-    # 07 — TLS SNI
-    if run("tlssni"):
-        if _scan_interrupted:
-            _finish(results, start, cfg)
-        sni = TLSSNIProber(cfg, results)
-        found |= sni.run(wordlist)
+        # 07 — TLS SNI
+        if run("tlssni"):
+            if _scan_interrupted:
+                _finish(results, start, cfg)
+            sni = TLSSNIProber(cfg, results)
+            found |= sni.run(wordlist)
 
-    # 08 — CAA Pivot
-    if run("caa"):
-        if _scan_interrupted:
-            _finish(results, start, cfg)
-        caa = CAAPivot(cfg, pool, results)
-        found |= caa.run(wordlist)
+        # 08 — CAA Pivot
+        if run("caa"):
+            if _scan_interrupted:
+                _finish(results, start, cfg)
+            caa = CAAPivot(cfg, pool, results)
+            found |= caa.run(wordlist)
 
-    # 09 — CORS
-    if run("cors"):
-        if _scan_interrupted:
-            _finish(results, start, cfg)
-        cors = CORSMiner(cfg, pool, results)
-        found |= cors.run(found, wordlist)
+        # 09 — CORS
+        if run("cors"):
+            if _scan_interrupted:
+                _finish(results, start, cfg)
+            cors = CORSMiner(cfg, pool, results)
+            found |= cors.run(found, wordlist)
 
-    # 10 — CHAOS
-    if run("chaos"):
-        if _scan_interrupted:
-            _finish(results, start, cfg)
-        chaos = CHAOSQuery(cfg, pool, results)
-        found |= chaos.run()
+        # 10 — CHAOS
+        if run("chaos"):
+            if _scan_interrupted:
+                _finish(results, start, cfg)
+            chaos = CHAOSQuery(cfg, pool, results)
+            found |= chaos.run()
 
-    # 11 — VHost
-    if run("vhost"):
-        if _scan_interrupted:
-            _finish(results, start, cfg)
-        vhf = VHostFuzzer(cfg, pool, results)
-        found |= vhf.run(found, wordlist)
+        # 11 — VHost
+        if run("vhost"):
+            if _scan_interrupted:
+                _finish(results, start, cfg)
+            vhf = VHostFuzzer(cfg, pool, results)
+            found |= vhf.run(found, wordlist)
 
-    # 12 — Recursive
-    if run("recursive"):
-        if _scan_interrupted:
-            _finish(results, start, cfg)
-        re_enum = RecursiveEnumerator(cfg, pool, wc, results)
-        found |= re_enum.run(found, cfg.depth)
+        # 12 — Recursive
+        if run("recursive"):
+            if _scan_interrupted:
+                _finish(results, start, cfg)
+            re_enum = RecursiveEnumerator(cfg, pool, wc, results)
+            found |= re_enum.run(found, cfg.depth)
 
     # All techniques done — final summary and save
     # Build passive breakdown dict for summary card

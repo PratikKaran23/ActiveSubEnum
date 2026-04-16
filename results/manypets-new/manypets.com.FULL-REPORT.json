@@ -1,0 +1,6392 @@
+{
+  "domain": "manypets.com",
+  "validated_count": 251,
+  "confirmed_real": 0,
+  "stats": {
+    "input": 251,
+    "after_wildcard": 251,
+    "after_sinkhole": 251,
+    "after_portscan": 0,
+    "after_content": 0,
+    "after_asn": 251,
+    "cdn_wildcard_ips": 0,
+    "sinkhole": 0,
+    "dead_dns": 251,
+    "no_waf": 0,
+    "expired_tls": 0,
+    "takeover_candidates": 4,
+    "owned_infra": 0,
+    "stage_times": {
+      "port_scan": 0.004835844039916992
+    }
+  },
+  "results": {
+    "qb-katt-hund.se.manypets.com": {
+      "fqdn": "qb-katt-hund.se.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "partners.dev.policies.io.manypets.com": {
+      "fqdn": "partners.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "distribution.eu-test.policies.io.manypets.com": {
+      "fqdn": "distribution.eu-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "customer.eu-test.policies.io.manypets.com": {
+      "fqdn": "customer.eu-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "customer.us-test.policies.io.manypets.com": {
+      "fqdn": "customer.us-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "claim.eu.policies.io.manypets.com": {
+      "fqdn": "claim.eu.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "claim-docs.us-test.policies.io.manypets.com": {
+      "fqdn": "claim-docs.us-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "account.us.policies.io.manypets.com": {
+      "fqdn": "account.us.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "shop.eu-test.policies.io.manypets.com": {
+      "fqdn": "shop.eu-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "chatbot.eu.policies.io.manypets.com": {
+      "fqdn": "chatbot.eu.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "secure-eu-b.example.dev.policies.io.manypets.com": {
+      "fqdn": "secure-eu-b.example.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "secure.payment.dev.policies.io.manypets.com": {
+      "fqdn": "secure.payment.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 20,
+      "cname": null
+    },
+    "eu.manypets.com": {
+      "fqdn": "eu.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "roblambell-dummy-mtls-us.example.dev.policies.io.manypets.com": {
+      "fqdn": "roblambell-dummy-mtls-us.example.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "api-docs.policies.io.manypets.com": {
+      "fqdn": "api-docs.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "customer.us.policies.io.manypets.com": {
+      "fqdn": "customer.us.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "secure.claim.eu-test.policies.io.manypets.com": {
+      "fqdn": "secure.claim.eu-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "greenhouse.manypets.com": {
+      "fqdn": "greenhouse.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive",
+        "brute[P1]",
+        "brute[01]",
+        "caa-record"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 8,
+      "cname": "mailgun.org"
+    },
+    "secure.subscription.us-test.policies.io.manypets.com": {
+      "fqdn": "secure.subscription.us-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 20,
+      "cname": null
+    },
+    "bp.manypets.com": {
+      "fqdn": "bp.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive",
+        "brute[P1]",
+        "brute[01]",
+        "ipv6-aaaa",
+        "caa-confirmed"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 8,
+      "cname": "d2652b5gn7f8hw.cloudfront.net"
+    },
+    "payment.eu-test.policies.io.manypets.com": {
+      "fqdn": "payment.eu-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 20,
+      "cname": null
+    },
+    "policy.us-test.policies.io.manypets.com": {
+      "fqdn": "policy.us-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "shop.us.policies.io.manypets.com": {
+      "fqdn": "shop.us.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "secure.luna.dev.policies.io.manypets.com": {
+      "fqdn": "secure.luna.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "email.email-se.manypets.com": {
+      "fqdn": "email.email-se.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive",
+        "brute[P1]"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": "e-eu.customeriomail.com"
+    },
+    "partners.eu-test.policies.io.manypets.com": {
+      "fqdn": "partners.eu-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "service.manypets.com": {
+      "fqdn": "service.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "plans.manypets.com": {
+      "fqdn": "plans.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive",
+        "brute[P1]",
+        "brute[01]",
+        "caa-confirmed"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 8,
+      "cname": null
+    },
+    "account.eu-test.policies.io.manypets.com": {
+      "fqdn": "account.eu-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "secure.claim-automation.eu-test.policies.io.manypets.com": {
+      "fqdn": "secure.claim-automation.eu-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "secure.policy.eu.policies.io.manypets.com": {
+      "fqdn": "secure.policy.eu.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "secure-eu-west-1-b.example.dev.policies.io.manypets.com": {
+      "fqdn": "secure-eu-west-1-b.example.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "2a57j77sf95ir4fj35gouo102bbx0e2.storybook.policies.io.manypets.com": {
+      "fqdn": "2a57j77sf95ir4fj35gouo102bbx0e2.storybook.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "news.manypets.com": {
+      "fqdn": "news.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "fargate-spike.customer.dev.policies.io.manypets.com": {
+      "fqdn": "fargate-spike.customer.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "secure-eu-a.example.dev.policies.io.manypets.com": {
+      "fqdn": "secure-eu-a.example.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "rewards.manypets.com": {
+      "fqdn": "rewards.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive",
+        "brute[P1]",
+        "brute[01]",
+        "caa-confirmed"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 8,
+      "cname": null
+    },
+    "2a57j77sf95ir4fj35gouo102bbx0e2.gtm.uk.manypets.com": {
+      "fqdn": "2a57j77sf95ir4fj35gouo102bbx0e2.gtm.uk.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "claim-docs.us.policies.io.manypets.com": {
+      "fqdn": "claim-docs.us.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "us.policies.io.manypets.com": {
+      "fqdn": "us.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "claim.us-test.policies.io.manypets.com": {
+      "fqdn": "claim.us-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "trust.manypets.com": {
+      "fqdn": "trust.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive",
+        "brute[P1]",
+        "brute[01]",
+        "ipv6-aaaa",
+        "caa-confirmed"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 8,
+      "cname": "manypets.portals.safebase.io"
+    },
+    "secure.payment.us.policies.io.manypets.com": {
+      "fqdn": "secure.payment.us.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 5,
+      "cname": null
+    },
+    "account.us-test.policies.io.manypets.com": {
+      "fqdn": "account.us-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "autodiscover.manypets.com": {
+      "fqdn": "autodiscover.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive",
+        "brute[P1]",
+        "brute[01]",
+        "ipv6-aaaa",
+        "caa-confirmed"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 8,
+      "cname": "autodiscover.outlook.com"
+    },
+    "subscription.eu-test.policies.io.manypets.com": {
+      "fqdn": "subscription.eu-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 20,
+      "cname": null
+    },
+    "claim-automation.eu-test.policies.io.manypets.com": {
+      "fqdn": "claim-automation.eu-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "document-management.us-test.policies.io.manypets.com": {
+      "fqdn": "document-management.us-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "enterpriseenrollment.manypets.com": {
+      "fqdn": "enterpriseenrollment.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive",
+        "brute[P1]",
+        "brute[01]",
+        "caa-confirmed"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 8,
+      "cname": "enterpriseenrollment.manage.microsoft.com"
+    },
+    "secure.customer.eu-test.policies.io.manypets.com": {
+      "fqdn": "secure.customer.eu-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "us.manypets.com": {
+      "fqdn": "us.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "health-webhooks.eu-test.policies.io.manypets.com": {
+      "fqdn": "health-webhooks.eu-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "document-management.eu.policies.io.manypets.com": {
+      "fqdn": "document-management.eu.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "auth.manypets.com": {
+      "fqdn": "auth.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "secure.claim.eu.policies.io.manypets.com": {
+      "fqdn": "secure.claim.eu.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "secure.distribution.dev.policies.io.manypets.com": {
+      "fqdn": "secure.distribution.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "zendesk2.manypets.com": {
+      "fqdn": "zendesk2.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive",
+        "brute[P1]",
+        "brute[01]",
+        "cache-snoop@8.8.8.8",
+        "caa-confirmed"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": true,
+      "takeover_service": "Zendesk",
+      "score": 8,
+      "cname": "mail2.zendesk.com"
+    },
+    "secure.customer.us-test.policies.io.manypets.com": {
+      "fqdn": "secure.customer.us-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "secure.claim.dev.policies.io.manypets.com": {
+      "fqdn": "secure.claim.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "partners.eu.policies.io.manypets.com": {
+      "fqdn": "partners.eu.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "account.dev.policies.io.manypets.com": {
+      "fqdn": "account.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "secure.claim-internal.eu.policies.io.manypets.com": {
+      "fqdn": "secure.claim-internal.eu.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 20,
+      "cname": null
+    },
+    "client-vpn.dev.policies.io.manypets.com": {
+      "fqdn": "client-vpn.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 25,
+      "cname": null
+    },
+    "ipstesting.dev.policies.io.manypets.com": {
+      "fqdn": "ipstesting.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "chatbot.eu-test.policies.io.manypets.com": {
+      "fqdn": "chatbot.eu-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "pawrameters.us-test.policies.io.manypets.com": {
+      "fqdn": "pawrameters.us-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "secure.distribution.eu-test.policies.io.manypets.com": {
+      "fqdn": "secure.distribution.eu-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "campaigns.manypets.com": {
+      "fqdn": "campaigns.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive",
+        "brute[P1]",
+        "brute[01]",
+        "caa-confirmed"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 8,
+      "cname": null
+    },
+    "pin.se.manypets.com": {
+      "fqdn": "pin.se.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive",
+        "brute[P1]"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": "advertiser.adtraction.com"
+    },
+    "eu-test.policies.io.manypets.com": {
+      "fqdn": "eu-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "roblambell-dummy-mtls-eu.example.dev.policies.io.manypets.com": {
+      "fqdn": "roblambell-dummy-mtls-eu.example.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "policy.eu-test.policies.io.manypets.com": {
+      "fqdn": "policy.eu-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "secure.payment.eu.policies.io.manypets.com": {
+      "fqdn": "secure.payment.eu.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 5,
+      "cname": null
+    },
+    "claim-internal.us.policies.io.manypets.com": {
+      "fqdn": "claim-internal.us.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 20,
+      "cname": null
+    },
+    "document-management.us.policies.io.manypets.com": {
+      "fqdn": "document-management.us.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "admin.eu-test.policies.io.manypets.com": {
+      "fqdn": "admin.eu-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 35,
+      "cname": null
+    },
+    "pawrameters.us.policies.io.manypets.com": {
+      "fqdn": "pawrameters.us.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "secure.claim-automation.us.policies.io.manypets.com": {
+      "fqdn": "secure.claim-automation.us.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "email-us.manypets.com": {
+      "fqdn": "email-us.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "secure.claim-internal.eu-test.policies.io.manypets.com": {
+      "fqdn": "secure.claim-internal.eu-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 35,
+      "cname": null
+    },
+    "2a57j781ozgf3ua9ns2zdzsgg5gfog2.sgtm.manypets.com": {
+      "fqdn": "2a57j781ozgf3ua9ns2zdzsgg5gfog2.sgtm.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "secure.subscription.us.policies.io.manypets.com": {
+      "fqdn": "secure.subscription.us.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 5,
+      "cname": null
+    },
+    "zendesk4.manypets.com": {
+      "fqdn": "zendesk4.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive",
+        "brute[P1]",
+        "brute[01]",
+        "caa-confirmed"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": true,
+      "takeover_service": "Zendesk",
+      "score": 8,
+      "cname": "mail4.zendesk.com"
+    },
+    "storybook.policies.io.manypets.com": {
+      "fqdn": "storybook.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "secure.luna.eu.policies.io.manypets.com": {
+      "fqdn": "secure.luna.eu.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "claims-external-orchestrator.us.policies.io.manypets.com": {
+      "fqdn": "claims-external-orchestrator.us.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "secure.product.eu-test.policies.io.manypets.com": {
+      "fqdn": "secure.product.eu-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "luna.dev.policies.io.manypets.com": {
+      "fqdn": "luna.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "claim-internal.dev.policies.io.manypets.com": {
+      "fqdn": "claim-internal.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 35,
+      "cname": null
+    },
+    "secure.subscription.dev.policies.io.manypets.com": {
+      "fqdn": "secure.subscription.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 20,
+      "cname": null
+    },
+    "www.policies.io.manypets.com": {
+      "fqdn": "www.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "zendesk1.manypets.com": {
+      "fqdn": "zendesk1.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive",
+        "brute[P1]",
+        "brute[01]",
+        "cache-snoop@8.8.8.8",
+        "caa-confirmed"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": true,
+      "takeover_service": "Zendesk",
+      "score": 8,
+      "cname": "mail1.zendesk.com"
+    },
+    "product.us.policies.io.manypets.com": {
+      "fqdn": "product.us.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "admin.us.policies.io.manypets.com": {
+      "fqdn": "admin.us.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 20,
+      "cname": null
+    },
+    "distribution.us.policies.io.manypets.com": {
+      "fqdn": "distribution.us.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "mailgun.manypets.com": {
+      "fqdn": "mailgun.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive",
+        "brute[P1]",
+        "brute[01]",
+        "caa-record"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 13,
+      "cname": "eu.mailgun.org"
+    },
+    "payment.us-test.policies.io.manypets.com": {
+      "fqdn": "payment.us-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 20,
+      "cname": null
+    },
+    "secure-us-east-1-a.example.dev.policies.io.manypets.com": {
+      "fqdn": "secure-us-east-1-a.example.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "secure-ts.example.dev.policies.io.manypets.com": {
+      "fqdn": "secure-ts.example.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "qb.us.manypets.com": {
+      "fqdn": "qb.us.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "chatbot.dev.policies.io.manypets.com": {
+      "fqdn": "chatbot.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "secure.policy.dev.policies.io.manypets.com": {
+      "fqdn": "secure.policy.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "outbound-webhook.policies.io.manypets.com": {
+      "fqdn": "outbound-webhook.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "pawrameters.dev.policies.io.manypets.com": {
+      "fqdn": "pawrameters.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "secure.policy.us-test.policies.io.manypets.com": {
+      "fqdn": "secure.policy.us-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "claim-automation.us.policies.io.manypets.com": {
+      "fqdn": "claim-automation.us.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "secure-us-b.example.dev.policies.io.manypets.com": {
+      "fqdn": "secure-us-b.example.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "dev.qb-katt-hund.se.manypets.com": {
+      "fqdn": "dev.qb-katt-hund.se.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "zendesk3.manypets.com": {
+      "fqdn": "zendesk3.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive",
+        "brute[P1]",
+        "brute[01]",
+        "caa-confirmed"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": true,
+      "takeover_service": "Zendesk",
+      "score": 8,
+      "cname": "mail3.zendesk.com"
+    },
+    "distribution.us-test.policies.io.manypets.com": {
+      "fqdn": "distribution.us-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "health.eu.policies.io.manypets.com": {
+      "fqdn": "health.eu.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "secure.claim-internal.us-test.policies.io.manypets.com": {
+      "fqdn": "secure.claim-internal.us-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 35,
+      "cname": null
+    },
+    "usnews.manypets.com": {
+      "fqdn": "usnews.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "secure.customer.eu.policies.io.manypets.com": {
+      "fqdn": "secure.customer.eu.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "email.update.manypets.com": {
+      "fqdn": "email.update.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive",
+        "brute[P1]"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": "e-eu.customeriomail.com"
+    },
+    "claims-external-orchestrator.eu.policies.io.manypets.com": {
+      "fqdn": "claims-external-orchestrator.eu.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "claim.us.policies.io.manypets.com": {
+      "fqdn": "claim.us.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "preview.sgtm.manypets.com": {
+      "fqdn": "preview.sgtm.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive",
+        "brute[P1]"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": "h4psmaqpsp.eu-west-1.awsapprunner.com"
+    },
+    "secure.payment.us-test.policies.io.manypets.com": {
+      "fqdn": "secure.payment.us-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 20,
+      "cname": null
+    },
+    "secure.luna.eu-test.policies.io.manypets.com": {
+      "fqdn": "secure.luna.eu-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "product.dev.policies.io.manypets.com": {
+      "fqdn": "product.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "auth.policies.io.manypets.com": {
+      "fqdn": "auth.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "us-test.policies.io.manypets.com": {
+      "fqdn": "us-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "claim-internal.us-test.policies.io.manypets.com": {
+      "fqdn": "claim-internal.us-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 35,
+      "cname": null
+    },
+    "secure-eu-west-1-a.example.dev.policies.io.manypets.com": {
+      "fqdn": "secure-eu-west-1-a.example.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "se-staging-api.manypets.com": {
+      "fqdn": "se-staging-api.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 30,
+      "cname": null
+    },
+    "payment.eu.policies.io.manypets.com": {
+      "fqdn": "payment.eu.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 5,
+      "cname": null
+    },
+    "olicy-lifecycle-manager.policies.io.manypets.com": {
+      "fqdn": "olicy-lifecycle-manager.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "shop.dev.policies.io.manypets.com": {
+      "fqdn": "shop.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "2a57j77sf95ir4fj35gouo102bbx0e2.preview.gtm.uk.manypets.com": {
+      "fqdn": "2a57j77sf95ir4fj35gouo102bbx0e2.preview.gtm.uk.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "health-webhooks.eu.policies.io.manypets.com": {
+      "fqdn": "health-webhooks.eu.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "subscription.us-test.policies.io.manypets.com": {
+      "fqdn": "subscription.us-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 20,
+      "cname": null
+    },
+    "payment.us.policies.io.manypets.com": {
+      "fqdn": "payment.us.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 5,
+      "cname": null
+    },
+    "se-dev-api.manypets.com": {
+      "fqdn": "se-dev-api.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 30,
+      "cname": null
+    },
+    "dev.se.manypets.com": {
+      "fqdn": "dev.se.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "email.usnews.manypets.com": {
+      "fqdn": "email.usnews.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive",
+        "brute[P1]"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": "e-eu.customeriomail.com"
+    },
+    "secure.payment.eu-test.policies.io.manypets.com": {
+      "fqdn": "secure.payment.eu-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 20,
+      "cname": null
+    },
+    "admin.eu.policies.io.manypets.com": {
+      "fqdn": "admin.eu.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 20,
+      "cname": null
+    },
+    "service1.example.dev.policies.io.manypets.com": {
+      "fqdn": "service1.example.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "secure.product.dev.policies.io.manypets.com": {
+      "fqdn": "secure.product.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "test.dev.policies.io.manypets.com": {
+      "fqdn": "test.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "secure.product.us.policies.io.manypets.com": {
+      "fqdn": "secure.product.us.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "claims-external-orchestrator.us-test.policies.io.manypets.com": {
+      "fqdn": "claims-external-orchestrator.us-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "pawrameters.eu.policies.io.manypets.com": {
+      "fqdn": "pawrameters.eu.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "claim-docs.dev.policies.io.manypets.com": {
+      "fqdn": "claim-docs.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "payment.dev.policies.io.manypets.com": {
+      "fqdn": "payment.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 20,
+      "cname": null
+    },
+    "claim-internal.eu.policies.io.manypets.com": {
+      "fqdn": "claim-internal.eu.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 20,
+      "cname": null
+    },
+    "admin.dev.policies.io.manypets.com": {
+      "fqdn": "admin.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 35,
+      "cname": null
+    },
+    "api.policies.io.manypets.com": {
+      "fqdn": "api.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "email.manypets.com": {
+      "fqdn": "email.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive",
+        "brute[P1]",
+        "brute[01]",
+        "caa-confirmed",
+        "vhost-fuzz"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 8,
+      "cname": "d27b3txwiqn4l3.cloudfront.net"
+    },
+    "admin-api.policies.io.manypets.com": {
+      "fqdn": "admin-api.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 35,
+      "cname": null
+    },
+    "email.email-us.manypets.com": {
+      "fqdn": "email.email-us.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive",
+        "brute[P1]"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": "e-eu.customeriomail.com"
+    },
+    "claim-docs.eu-test.policies.io.manypets.com": {
+      "fqdn": "claim-docs.eu-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "pawrameters.eu-test.policies.io.manypets.com": {
+      "fqdn": "pawrameters.eu-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "enterpriseregistration.manypets.com": {
+      "fqdn": "enterpriseregistration.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive",
+        "brute[P1]",
+        "brute[01]",
+        "ipv6-aaaa",
+        "caa-confirmed"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 8,
+      "cname": "enterpriseregistration.windows.net"
+    },
+    "fargate-spike.admin.dev.policies.io.manypets.com": {
+      "fqdn": "fargate-spike.admin.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 35,
+      "cname": null
+    },
+    "update.manypets.com": {
+      "fqdn": "update.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "secure.claim-internal.dev.policies.io.manypets.com": {
+      "fqdn": "secure.claim-internal.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 35,
+      "cname": null
+    },
+    "claim-automation.us-test.policies.io.manypets.com": {
+      "fqdn": "claim-automation.us-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "secure.product.us-test.policies.io.manypets.com": {
+      "fqdn": "secure.product.us-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "email-se.manypets.com": {
+      "fqdn": "email-se.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "email.gh-mail.manypets.com": {
+      "fqdn": "email.gh-mail.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive",
+        "brute[P1]"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 5,
+      "cname": "mailgun.org"
+    },
+    "claims-external-orchestrator.eu-test.policies.io.manypets.com": {
+      "fqdn": "claims-external-orchestrator.eu-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "secure.policy.eu-test.policies.io.manypets.com": {
+      "fqdn": "secure.policy.eu-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "shop.us-test.policies.io.manypets.com": {
+      "fqdn": "shop.us-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "partners.us.policies.io.manypets.com": {
+      "fqdn": "partners.us.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "customer.dev.policies.io.manypets.com": {
+      "fqdn": "customer.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "secure.customer.dev.policies.io.manypets.com": {
+      "fqdn": "secure.customer.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "email.usupdate.manypets.com": {
+      "fqdn": "email.usupdate.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive",
+        "brute[P1]"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": "e-eu.customeriomail.com"
+    },
+    "product.us-test.policies.io.manypets.com": {
+      "fqdn": "product.us-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "policy.eu.policies.io.manypets.com": {
+      "fqdn": "policy.eu.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "gtm.se.manypets.com": {
+      "fqdn": "gtm.se.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive",
+        "brute[P1]"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": "xhpuivsj3c.eu-west-1.awsapprunner.com"
+    },
+    "luna.eu.policies.io.manypets.com": {
+      "fqdn": "luna.eu.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "2a57j7852qs07smr4qj2ilatq79cyvg.preview.gtm.se.manypets.com": {
+      "fqdn": "2a57j7852qs07smr4qj2ilatq79cyvg.preview.gtm.se.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "2a57j7852qs07smr4qj2ilatq79cyvg.gtm.se.manypets.com": {
+      "fqdn": "2a57j7852qs07smr4qj2ilatq79cyvg.gtm.se.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "shop.eu.policies.io.manypets.com": {
+      "fqdn": "shop.eu.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "email.auth.manypets.com": {
+      "fqdn": "email.auth.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive",
+        "brute[P1]"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": "eu.mailgun.org"
+    },
+    "gh-mail.manypets.com": {
+      "fqdn": "gh-mail.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 5,
+      "cname": null
+    },
+    "sgtm.manypets.com": {
+      "fqdn": "sgtm.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive",
+        "brute[P1]",
+        "brute[01]",
+        "caa-confirmed"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 8,
+      "cname": "a5cxqv3qmq.eu-west-1.awsapprunner.com"
+    },
+    "dc708283.claim.eu.policies.io.manypets.com": {
+      "fqdn": "dc708283.claim.eu.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "policy.us.policies.io.manypets.com": {
+      "fqdn": "policy.us.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "secure.distribution.eu.policies.io.manypets.com": {
+      "fqdn": "secure.distribution.eu.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "secure.policy.us.policies.io.manypets.com": {
+      "fqdn": "secure.policy.us.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "secure.product.eu.policies.io.manypets.com": {
+      "fqdn": "secure.product.eu.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "example.dev.policies.io.manypets.com": {
+      "fqdn": "example.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "partners.us-test.policies.io.manypets.com": {
+      "fqdn": "partners.us-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "health.dev.policies.io.manypets.com": {
+      "fqdn": "health.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "help.uk.manypets.com": {
+      "fqdn": "help.uk.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive",
+        "brute[P1]"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": "d2awvzoygftxag.cloudfront.net"
+    },
+    "customer.eu.policies.io.manypets.com": {
+      "fqdn": "customer.eu.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "auth.eu.manypets.com": {
+      "fqdn": "auth.eu.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive",
+        "brute[P1]",
+        "recursive-l1"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": "eu-prod-cd-c4hcfungjgryaasg.edge.tenants.eu.auth0.com"
+    },
+    "document-management.eu-test.policies.io.manypets.com": {
+      "fqdn": "document-management.eu-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "subscription.us.policies.io.manypets.com": {
+      "fqdn": "subscription.us.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 5,
+      "cname": null
+    },
+    "distribution.eu.policies.io.manypets.com": {
+      "fqdn": "distribution.eu.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "se-prod-api.manypets.com": {
+      "fqdn": "se-prod-api.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "auth.us.manypets.com": {
+      "fqdn": "auth.us.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive",
+        "brute[P1]",
+        "recursive-l1"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": "us-prod-cd-tj0mw4htyzftbjyf.edge.tenants.us.auth0.com"
+    },
+    "us-email.auth.manypets.com": {
+      "fqdn": "us-email.auth.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive",
+        "brute[P1]"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": "mailgun.org"
+    },
+    "claim.eu-test.policies.io.manypets.com": {
+      "fqdn": "claim.eu-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "claim-automation.eu.policies.io.manypets.com": {
+      "fqdn": "claim-automation.eu.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "admin.us-test.policies.io.manypets.com": {
+      "fqdn": "admin.us-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 35,
+      "cname": null
+    },
+    "account.se.manypets.com": {
+      "fqdn": "account.se.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "account.us.manypets.com": {
+      "fqdn": "account.us.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "product.eu-test.policies.io.manypets.com": {
+      "fqdn": "product.eu-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "app.policies.io.manypets.com": {
+      "fqdn": "app.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "policy.dev.policies.io.manypets.com": {
+      "fqdn": "policy.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "health.eu-test.policies.io.manypets.com": {
+      "fqdn": "health.eu-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "eu.policies.io.manypets.com": {
+      "fqdn": "eu.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "styleguide.manypets.com": {
+      "fqdn": "styleguide.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "r.manypets.com": {
+      "fqdn": "r.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive",
+        "brute[P1]",
+        "brute[01]",
+        "ipv6-aaaa",
+        "caa-confirmed"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 8,
+      "cname": "d350qbd64hffhr.cloudfront.net"
+    },
+    "secure.claim-automation.eu.policies.io.manypets.com": {
+      "fqdn": "secure.claim-automation.eu.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "luna.eu-test.policies.io.manypets.com": {
+      "fqdn": "luna.eu-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "www.rewards.manypets.com": {
+      "fqdn": "www.rewards.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive",
+        "brute[P1]"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "product.eu.policies.io.manypets.com": {
+      "fqdn": "product.eu.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "claimdocs.dev.policies.io.manypets.com": {
+      "fqdn": "claimdocs.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "health-webhooks.dev.policies.io.manypets.com": {
+      "fqdn": "health-webhooks.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "gtm.uk.manypets.com": {
+      "fqdn": "gtm.uk.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive",
+        "brute[P1]"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": "8mbs8mdk3k.eu-west-1.awsapprunner.com"
+    },
+    "secure-us-east-1-b.example.dev.policies.io.manypets.com": {
+      "fqdn": "secure-us-east-1-b.example.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "preview.gtm.uk.manypets.com": {
+      "fqdn": "preview.gtm.uk.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive",
+        "brute[P1]"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": "3uuzatxtps.eu-west-1.awsapprunner.com"
+    },
+    "secure.customer.us.policies.io.manypets.com": {
+      "fqdn": "secure.customer.us.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "secure-us-a.example.dev.policies.io.manypets.com": {
+      "fqdn": "secure-us-a.example.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "claims-external-orchestrator.dev.policies.io.manypets.com": {
+      "fqdn": "claims-external-orchestrator.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "usupdate.manypets.com": {
+      "fqdn": "usupdate.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "policy-lifecycle-manager.policies.io.manypets.com": {
+      "fqdn": "policy-lifecycle-manager.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "admin-api.us.policies.io.manypets.com": {
+      "fqdn": "admin-api.us.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 35,
+      "cname": null
+    },
+    "claim.dev.policies.io.manypets.com": {
+      "fqdn": "claim.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "policies.io.manypets.com": {
+      "fqdn": "policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "secure.subscription.eu.policies.io.manypets.com": {
+      "fqdn": "secure.subscription.eu.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 5,
+      "cname": null
+    },
+    "dev.policies.io.manypets.com": {
+      "fqdn": "dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "help.se.manypets.com": {
+      "fqdn": "help.se.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive",
+        "brute[P1]"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": "d2awvzoygftxag.cloudfront.net"
+    },
+    "claim-automation.dev.policies.io.manypets.com": {
+      "fqdn": "claim-automation.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "static.manypets.com": {
+      "fqdn": "static.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive",
+        "brute[P1]",
+        "brute[01]",
+        "caa-confirmed"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 8,
+      "cname": "d21yyrcjeoyvf6.cloudfront.net"
+    },
+    "subscription.dev.policies.io.manypets.com": {
+      "fqdn": "subscription.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 20,
+      "cname": null
+    },
+    "secure.claim-internal.us.policies.io.manypets.com": {
+      "fqdn": "secure.claim-internal.us.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 20,
+      "cname": null
+    },
+    "www.manypets.com": {
+      "fqdn": "www.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive",
+        "brute[P1]",
+        "brute[01]",
+        "caa-confirmed"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 8,
+      "cname": "d2awvzoygftxag.cloudfront.net"
+    },
+    "pin.manypets.com": {
+      "fqdn": "pin.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive",
+        "brute[P1]",
+        "brute[01]",
+        "caa-record"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 8,
+      "cname": "cloud.adt790.com"
+    },
+    "account.eu.policies.io.manypets.com": {
+      "fqdn": "account.eu.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "se.manypets.com": {
+      "fqdn": "se.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "preview.gtm.se.manypets.com": {
+      "fqdn": "preview.gtm.se.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive",
+        "brute[P1]"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": "3mwvim9vug.eu-west-1.awsapprunner.com"
+    },
+    "uk.manypets.com": {
+      "fqdn": "uk.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "distribution.dev.policies.io.manypets.com": {
+      "fqdn": "distribution.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "claim-internal.eu-test.policies.io.manypets.com": {
+      "fqdn": "claim-internal.eu-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 35,
+      "cname": null
+    },
+    "email.news.manypets.com": {
+      "fqdn": "email.news.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive",
+        "brute[P1]"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": "d27b3txwiqn4l3.cloudfront.net"
+    },
+    "api.manypets.com": {
+      "fqdn": "api.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "auth.se.manypets.com": {
+      "fqdn": "auth.se.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "mail.rewards.manypets.com": {
+      "fqdn": "mail.rewards.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive",
+        "brute[P1]"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 5,
+      "cname": null
+    },
+    "claim-docs.eu.policies.io.manypets.com": {
+      "fqdn": "claim-docs.eu.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 0,
+      "cname": null
+    },
+    "secure.subscription.eu-test.policies.io.manypets.com": {
+      "fqdn": "secure.subscription.eu-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 20,
+      "cname": null
+    },
+    "secure.claim-automation.us-test.policies.io.manypets.com": {
+      "fqdn": "secure.claim-automation.us-test.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "email.service.manypets.com": {
+      "fqdn": "email.service.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive",
+        "brute[P1]"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": "d27b3txwiqn4l3.cloudfront.net"
+    },
+    "2a57j77sf95ir4fj35gouo102bbx0e2.preview.sgtm.manypets.com": {
+      "fqdn": "2a57j77sf95ir4fj35gouo102bbx0e2.preview.sgtm.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "secure.claim-automation.dev.policies.io.manypets.com": {
+      "fqdn": "secure.claim-automation.dev.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 15,
+      "cname": null
+    },
+    "subscription.eu.policies.io.manypets.com": {
+      "fqdn": "subscription.eu.policies.io.manypets.com",
+      "ips": [
+        "[passive-unresolved]"
+      ],
+      "techniques": [
+        "passive"
+      ],
+      "open_ports": [],
+      "http_status": null,
+      "http_status_code": 0,
+      "http_title": null,
+      "http_server": null,
+      "tls_tag": null,
+      "asn_tag": "THIRD-PARTY",
+      "asn_info": {},
+      "waf_detected": null,
+      "is_wildcard_noise": false,
+      "is_sinkhole": false,
+      "is_cdn_generic": false,
+      "is_takeover_candidate": false,
+      "takeover_service": null,
+      "score": 5,
+      "cname": null
+    }
+  }
+}
