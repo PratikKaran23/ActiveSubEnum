@@ -31,7 +31,7 @@ import ssl
 import string
 import sys
 import time
-from collections import defaultdict
+from collections import defaultdict, deque
 from concurrent.futures import ThreadPoolExecutor, as_completed, wait, FIRST_COMPLETED
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -720,6 +720,8 @@ class BruteForcer:
         self.rate_monitor = rate_monitor
         self.checkpoint = checkpoint_manager
         self._backoff_logged = False
+        self._query_times: deque = deque()
+        self._rate_warned = False
 
     def _try(self, word: str) -> Optional[Tuple[str, List[str]]]:
         # Optional jitter — stagger queries slightly to avoid burst patterns
@@ -767,9 +769,10 @@ class BruteForcer:
 
         with Progress(
             SpinnerColumn(), TextColumn("[progress.description]{task.description}"),
-            BarColumn(), TaskProgressColumn(), console=console, transient=True,
+            BarColumn(), TaskProgressColumn(),
+            TextColumn("[dim]{task.fields[rate]}[/dim]"), console=console, transient=True,
         ) as prog:
-            task = prog.add_task("[cyan]Resolving...", total=words_total)
+            task = prog.add_task("[cyan]Resolving...[/cyan]", total=words_total, rate="")
             ex = ThreadPoolExecutor(max_workers=threads_current[0])
             it = iter(wordlist)
 
@@ -782,6 +785,21 @@ class BruteForcer:
                         break
                     fut = ex.submit(self._try, w)
                     pending[fut] = w
+
+                    # Track query rate (sliding 10-second window)
+                    now = time.time()
+                    self._query_times.append(now)
+                    cutoff = now - 10.0
+                    while self._query_times and self._query_times[0] < cutoff:
+                        self._query_times.popleft()
+                    qps = len(self._query_times)
+                    prog.update(task, rate=f"{qps} q/s")
+
+                    # Warn once if exceeding configured max_rate by >20%
+                    if not self._rate_warned and self.cfg.max_rate > 0:
+                        if qps > self.cfg.max_rate * 1.2:
+                            console.print(f"\n  [yellow]![/yellow] Rate spike: {qps} q/s (limit: {self.cfg.max_rate})")
+                            self._rate_warned = True
 
                 # Wait for at least one to finish
                 if not pending:
