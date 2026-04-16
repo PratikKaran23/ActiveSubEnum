@@ -324,27 +324,36 @@ class RateLimitMonitor:
         return self._in_backoff and self._backoff_level == 2
 
     def summary(self) -> str:
-        """Return a summary string."""
+        """Return a brief summary string for display."""
         rate = self._current_failure_rate()
-        with self._lock:
-            total = self._total_queries
-            failures = self._total_failures
         backoff_str = ""
         if self._in_backoff:
             remaining = self.backoff_remaining()
             lvl = "SEVERE" if self._backoff_level == 2 else "moderate"
-            backoff_str = f" | BACKOFF({lvl}) {remaining:.0f}s remaining"
-        health = self._pool_ref.health_summary() if self._pool_ref else ""
-        return (f"Monitor: {rate:.0%} fail rate | "
-                f"{failures}/{total} failed{backoff_str} | {health}")
+            backoff_str = f" | BACKOFF({lvl}) {remaining:.0f}s"
+        return f"Rate monitor: {rate:.0%} fail rate{backoff_str}"
+
+    def get_brief(self) -> str:
+        """Return a very brief one-liner for periodic status updates."""
+        rate = self._current_failure_rate()
+        if self._in_backoff:
+            remaining = self.backoff_remaining()
+            lvl = "SEVERE" if self._backoff_level == 2 else "moderate"
+            return f"Rate: {rate:.0%} fail | BACKOFF({lvl}) {remaining:.0f}s"
+        return f"Rate: {rate:.0%} fail"
 
     def start(self):
-        """Start background health reporting thread."""
+        """Start background health reporting thread — fires at most every 60s,
+        and only when fail rate > 10% or actively in backoff."""
         def reporter():
             while not self._stop.is_set():
                 time.sleep(60)
-                if self._total_queries > 0 and not self._stop.is_set():
-                    print(f"  [*] {self.summary()}")
+                if self._total_queries == 0 or self._stop.is_set():
+                    continue
+                rate = self._current_failure_rate()
+                # Only print if fail rate > 10% or in backoff
+                if rate > 0.10 or self._in_backoff:
+                    print(f"  [*] {self.get_brief()}")
         self._thread = threading.Thread(target=reporter, daemon=True)
         self._thread.start()
 

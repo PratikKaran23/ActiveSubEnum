@@ -188,28 +188,19 @@ class ResolverPool:
         if stats.status == "dead":
             return
 
-        # Check recent failure rate
+        # Check recent failure rate — require 20 queries before evaluating
         recent = stats._recent[-20:] if stats._recent else []
-        if len(recent) < 5:
+        if len(recent) < 20:
             return
 
         failures = sum(1 for _, e in recent if e in ("servfail", "timeout"))
         rate = failures / len(recent)
 
-        # All timeouts → dead
-        timeouts = sum(1 for _, e in recent if e == "timeout")
-        if timeouts >= 8:
-            with self._lock:
-                stats.status = "dead"
-                self._dead.add(stats.ip)
-                self._eviction_count += 1
-            return
-
-        # >50% servfail/timeout → throttled
-        if rate > 0.5:
+        # Only evict if >80% failures over last 20 queries (not aggressive)
+        if rate > 0.8:
             with self._lock:
                 stats.status = "throttled"
-                stats.throttled_until = now + 90
+                stats.throttled_until = now + 120
                 self._eviction_count += 1
 
     def record_success(self, ip: str, latency_ms: float):
@@ -462,8 +453,9 @@ RESOLVER_SOURCES = [
 def fetch_resolvers_from_web(timeout: int = 15) -> List[str]:
     """Fetch DNS resolver IPs from all configured sources.
 
-    Uses all RESOLVER_SOURCES. Merges and deduplicates results.
-    Falls back to DEFAULT_RESOLVERS if all sources fail.
+    Uses ThreadPoolExecutor + urllib (no aiohttp dependency).
+    All sources fetched concurrently. Results merged + deduplicated.
+    Falls back to DEFAULT_RESOLVERS only if every source fails.
 
     Args:
         timeout: seconds to wait per source (default 15)
@@ -471,67 +463,42 @@ def fetch_resolvers_from_web(timeout: int = 15) -> List[str]:
     Returns:
         List of unique resolver IP strings
     """
-    try:
-        import aiohttp
-        import asyncio
-    except ImportError:
-        return list(DEFAULT_RESOLVERS)
+    import urllib.request
+
+    def _fetch_source(url: str) -> List[str]:
+        """Fetch one source URL, return list of resolver IPs."""
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+            with urllib.request.urlopen(req, timeout=timeout) as resp:
+                if resp.status != 200:
+                    return []
+                lines = resp.read().decode("utf-8", errors="ignore").splitlines()
+                return [ip for line in lines
+                        if (ip := _parse_resolver_line(line))]
+        except Exception:
+            return []
+
+    # Fetch all sources concurrently
+    with ThreadPoolExecutor(max_workers=len(RESOLVER_SOURCES)) as ex:
+        results = list(ex.map(_fetch_source, RESOLVER_SOURCES))
 
     raw: set = set()
-
-    async def _fetch_all():
-        try:
-            async with aiohttp.ClientTimeout(total=timeout) as tm:
-                async with aiohttp.ClientSession(timeout=tm) as sess:
-                    tasks = [sess.get(url) for url in RESOLVER_SOURCES]
-                    for resp in await asyncio.gather(*tasks, return_exceptions=True):
-                        if isinstance(resp, Exception):
-                            continue
-                        if resp.status == 200:
-                            text = await resp.text()
-                            for line in text.splitlines():
-                                ip = line.strip().split()[0] if line.strip() else ""
-                                if _looks_like_resolver(ip):
-                                    raw.add(ip)
-        except Exception:
-            pass
-
-    try:
-        asyncio.get_event_loop()
-    except RuntimeError:
-        asyncio.set_event_loop(asyncio.new_event_loop())
-
-    try:
-        asyncio.run(_fetch_all())
-    except Exception:
-        pass
+    for result in results:
+        raw.update(result)
 
     return list(raw) if raw else list(DEFAULT_RESOLVERS)
 
 
-def _looks_like_resolver(s: str) -> bool:
-    """Check if string looks like a valid IPv4 resolver."""
-    if not s or s.startswith("#") or s.startswith(";"):
-        return False
-    parts = s.split(".")
-    if len(parts) == 4:
-        return all(p.isdigit() and 0 <= int(p) <= 255 for p in parts)
-    return False
-    """Load resolvers from a file (one IP per line)."""
-    resolvers = []
-    try:
-        with open(path) as f:
-            for line in f:
-                line = line.strip().split()[0] if line.strip() else ""
-                if not line or line.startswith("#"):
-                    continue
-                parts = line.split(".")
-                if len(parts) == 4 and all(p.isdigit() and 0 <= int(p) <= 255 for p in parts):
-                    if not line.startswith(("0.", "255.", "127.")):
-                        resolvers.append(line)
-    except Exception:
-        pass
-    return resolvers
+def _parse_resolver_line(line: str) -> Optional[str]:
+    """Parse a resolver IP from a line of text. Returns IP or None."""
+    line = line.strip()
+    if not line or line.startswith("#") or line.startswith(";"):
+        return None
+    ip = line.split()[0]
+    parts = ip.split(".")
+    if len(parts) == 4 and all(p.isdigit() and 0 <= int(p) <= 255 for p in parts):
+        return ip
+    return None
 
 
 class ResolverRefresh:

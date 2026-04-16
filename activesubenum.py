@@ -338,12 +338,19 @@ class ResolverPool:
         self._health_check_done = False
         self._last_result_type: Optional[str] = None  # "success" | "nxdomain" | "noanswer" | "timeout" | "servfail"
         self._last_ip: Optional[str] = None  # IP of last resolver used (for rate monitor)
+        self._stop_refresh = threading.Event()
+        self._replenish_thread: Optional[threading.Thread] = None
 
         for ip in self._resolvers:
             self._stats[ip] = ResolverStats(ip)
 
         if do_health_check and track_health:
             self._do_health_check()
+
+        # Start background replenishment thread
+        if track_health:
+            self._replenish_thread = threading.Thread(target=self._replenishment_loop, daemon=True)
+            self._replenish_thread.start()
 
     def _do_health_check(self):
         """Quick health check to remove dead resolvers."""
@@ -357,15 +364,15 @@ class ResolverPool:
                 try:
                     r = dns.resolver.Resolver()
                     r.nameservers = [ns]
-                    r.timeout = 2
-                    r.lifetime = 2
+                    r.timeout = 5
+                    r.lifetime = 5
                     r.resolve(dom, "A")
                     return True
                 except Exception:
                     continue
             return False
 
-        with ThreadPoolExecutor(max_workers=min(100, len(self._resolvers))) as ex:
+        with ThreadPoolExecutor(max_workers=min(200, len(self._resolvers))) as ex:
             results = list(ex.map(check, self._resolvers))
 
         new_res = [ns for ns, ok in zip(self._resolvers, results) if ok]
@@ -373,6 +380,36 @@ class ResolverPool:
         if removed:
             self._resolvers = new_res
             print(f"  [i] Removed {removed} dead resolvers, {len(self._resolvers)} healthy")
+
+    def add_resolvers(self, new_ips: List[str]):
+        """Add new resolvers to the pool, skipping duplicates and dead ones."""
+        added = 0
+        with self._lock:
+            for ip in new_ips:
+                if ip not in self._resolvers and ip not in self._dead:
+                    self._resolvers.append(ip)
+                    self._stats[ip] = ResolverStats(ip)
+                    added += 1
+        if added:
+            print(f"  [*] Pool replenished: added {added} fresh resolvers")
+
+    def _replenishment_loop(self, interval: float = 300.0):
+        """Background thread: every `interval` seconds, fetch fresh resolvers
+        if the active pool drops below 20. Runs until stop event."""
+        from core.resolver import fetch_resolvers_from_web
+        while not self._stop_refresh.is_set():
+            self._stop_refresh.wait(timeout=interval)
+            if self._stop_refresh.is_set():
+                break
+            active = len(self._active())
+            if active >= 20:
+                continue
+            try:
+                fresh = fetch_resolvers_from_web(timeout=10)
+                if fresh:
+                    self.add_resolvers(fresh)
+            except Exception:
+                pass
 
     def _active(self) -> List[str]:
         now = time.time()
@@ -971,25 +1008,72 @@ class IPv6Enumerator:
         return None
 
     def run(self, wordlist: List[str]) -> Set[str]:
-        console.print(
-            f"\n[bold blue][06][/bold blue] IPv6 AAAA Enumeration — "
-            f"[cyan]{len(wordlist):,}[/cyan] words"
-        )
+        # Smart wordlist: only check AAAA for high-value words unless
+        # the root domain itself has IPv6 (indicating IPv6 is deployed).
+        root_has_aaaa = False
+        try:
+            r, ip = self.pool.get()
+            r.resolve(self.cfg.domain, "AAAA")
+            root_has_aaaa = True
+        except Exception:
+            pass
+
+        if not root_has_aaaa:
+            # No AAAA on root — use small curated list instead of full wordlist
+            wordlist = wordlist[:50]
+            console.print(
+                f"\n[bold blue][06][/bold blue] IPv6 AAAA Enumeration — "
+                f"[cyan]{len(wordlist):,}[/cyan] words (root has no AAAA — using curated list)"
+            )
+        else:
+            # Root has AAAA — cap at 50K to avoid OOM
+            wordlist = wordlist[:50000]
+            console.print(
+                f"\n[bold blue][06][/bold blue] IPv6 AAAA Enumeration — "
+                f"[cyan]{len(wordlist):,}[/cyan] words (root has AAAA — capping at 50K)"
+            )
+
         found: Set[str] = set()
+        words_total = len(wordlist)
+        words_done = 0
+        BATCH_SIZE = self.cfg.threads * 10
+
         with Progress(
             SpinnerColumn(), TextColumn("[progress.description]{task.description}"),
             BarColumn(), TaskProgressColumn(), console=console, transient=True,
         ) as prog:
-            task = prog.add_task("[cyan]IPv6 probing...", total=len(wordlist))
-            with ThreadPoolExecutor(max_workers=self.cfg.threads) as ex:
-                fs = {ex.submit(self._try, w): w for w in wordlist}
-                for f in as_completed(fs):
+            task = prog.add_task("[cyan]IPv6 probing...", total=words_total)
+            ex = ThreadPoolExecutor(max_workers=self.cfg.threads)
+            it = iter(wordlist)
+            pending = {}
+
+            while words_done < words_total:
+                while len(pending) < BATCH_SIZE:
+                    try:
+                        w = next(it)
+                    except StopIteration:
+                        break
+                    fut = ex.submit(self._try, w)
+                    pending[fut] = w
+
+                if not pending:
+                    break
+                done, _ = wait(pending, return_when=FIRST_COMPLETED)
+                for fut in done:
+                    word = pending.pop(fut)
                     prog.advance(task)
-                    r = f.result()
+                    words_done += 1
+                    try:
+                        r = fut.result()
+                    except Exception:
+                        r = None
                     if r:
                         fqdn, ips = r
                         self.results.add_sync(fqdn, ips, "ipv6-aaaa")
                         found.add(fqdn)
+
+            ex.shutdown(wait=False)
+
         console.print(f"  [dim]→ {len(found)} IPv6-only subdomains[/dim]")
         return found
 
@@ -1101,17 +1185,47 @@ class CAAPivot:
             f"[cyan]{len(wordlist):,}[/cyan] words"
         )
         found: Set[str] = set()
-        with ThreadPoolExecutor(max_workers=self.cfg.threads) as ex:
-            fs = {ex.submit(self._probe, w): w for w in wordlist}
-            for f in as_completed(fs):
-                r = f.result()
-                if r:
-                    fqdn, recs, is_caa = r
-                    # BUG FIX: previously NoAnswer path returned result but
-                    # was never added. Now both paths are handled correctly.
-                    tag = "caa-record" if is_caa else "caa-confirmed"
-                    self.results.add_sync(fqdn, recs, tag)
-                    found.add(fqdn)
+        words_total = len(wordlist)
+        words_done = 0
+        BATCH_SIZE = self.cfg.threads * 10
+
+        with Progress(
+            SpinnerColumn(), TextColumn("[progress.description]{task.description}"),
+            BarColumn(), TaskProgressColumn(), console=console, transient=True,
+        ) as prog:
+            task = prog.add_task("[cyan]CAA probing...", total=words_total)
+            ex = ThreadPoolExecutor(max_workers=self.cfg.threads)
+            it = iter(wordlist)
+            pending = {}
+
+            while words_done < words_total:
+                while len(pending) < BATCH_SIZE:
+                    try:
+                        w = next(it)
+                    except StopIteration:
+                        break
+                    fut = ex.submit(self._probe, w)
+                    pending[fut] = w
+
+                if not pending:
+                    break
+                done, _ = wait(pending, return_when=FIRST_COMPLETED)
+                for fut in done:
+                    word = pending.pop(fut)
+                    prog.advance(task)
+                    words_done += 1
+                    try:
+                        r = fut.result()
+                    except Exception:
+                        r = None
+                    if r:
+                        fqdn, recs, is_caa = r
+                        tag = "caa-record" if is_caa else "caa-confirmed"
+                        self.results.add_sync(fqdn, recs, tag)
+                        found.add(fqdn)
+
+            ex.shutdown(wait=False)
+
         console.print(f"  [dim]→ {len(found)} confirmed via CAA[/dim]")
         return found
 
@@ -1350,10 +1464,28 @@ class RecursiveEnumerator:
                 return None
 
             pairs = [(w, s) for s in seeds for w in RECURSIVE_SEEDS]
-            with ThreadPoolExecutor(max_workers=self.cfg.threads) as ex:
-                fs = {ex.submit(resolve_under, p): p for p in pairs}
-                for f in as_completed(fs):
-                    r = f.result()
+            BATCH_SIZE = self.cfg.threads * 10
+            pending = {}
+            it = iter(pairs)
+            ex = ThreadPoolExecutor(max_workers=self.cfg.threads)
+
+            while True:
+                while len(pending) < BATCH_SIZE:
+                    try:
+                        p = next(it)
+                    except StopIteration:
+                        break
+                    fut = ex.submit(resolve_under, p)
+                    pending[fut] = p
+                if not pending:
+                    break
+                done, _ = wait(pending, return_when=FIRST_COMPLETED)
+                for fut in done:
+                    p = pending.pop(fut)
+                    try:
+                        r = fut.result()
+                    except Exception:
+                        r = None
                     if r:
                         fqdn, ips = r
                         if fqdn not in all_new:
@@ -1361,6 +1493,7 @@ class RecursiveEnumerator:
                             new.add(fqdn)
                             all_new.add(fqdn)
 
+            ex.shutdown(wait=False)
             seeds = new
 
         console.print(f"  [dim]→ {len(all_new)} sub-subdomains found recursively[/dim]")
