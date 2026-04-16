@@ -255,6 +255,11 @@ class Config:
     profile: str = ""         # light | normal | fast | hunter
     # Heavy technique opt-in
     include_heavy: bool = False  # include vhost/cors/tlssni in "all"
+    # Passive intelligence
+    passive_list: str = ""            # ArgosDNS export file (zero API cost)
+    argos_key: str = ""               # ArgosDNS API key (costs requests)
+    argos_max_requests: int = 5       # max API requests per scan
+    skip_passive: bool = False        # skip all passive sources (crt.sh + ArgosDNS)
 
 # ─── Result Collector ────────────────────────────────────────────────────────
 
@@ -1563,7 +1568,8 @@ def save_results(results: ResultCollector, path: str):
     console.print(f"\n[bold green][✓] Saved {len(results.found)} results → {path}[/bold green]")
 
 
-def print_summary(results: ResultCollector, start: float):
+def print_summary(results: ResultCollector, start: float,
+                  passive_breakdown: Dict[str, int] = None):
     elapsed = time.time() - start
     table = Table(
         title="\n[bold]Active Subdomain Enumeration — Results[/bold]",
@@ -1577,6 +1583,34 @@ def print_summary(results: ResultCollector, start: float):
         info = results.found[sub]
         table.add_row(sub, ", ".join(info["ips"][:2]), ", ".join(info["techniques"]))
     console.print(table)
+
+    # ── DISCOVERY BREAKDOWN ─────────────────────────────────────────────────────
+    if passive_breakdown:
+        total = len(results.found)
+        active = sum(1 for v in results.found.values()
+                     if not any("passive" in t for t in v.get("techniques", [])))
+        passive_total = total - active
+
+        breakdown_lines = []
+        for source, count in sorted(passive_breakdown.items(), key=lambda x: -x[1]):
+            label = source
+            if source == "crt.sh":
+                label += " [dim][passive - free][/dim]"
+            elif "file" in source.lower():
+                label += " [dim][passive - 0 requests][/dim]"
+            else:
+                label += " [dim][passive][/dim]"
+            breakdown_lines.append(f"  ║  {source:<30} {count:>5}  ")
+
+        console.print("  ╔═[bold]DISCOVERY BREAKDOWN[/bold]════════════════════════════════╗")
+        for line in breakdown_lines:
+            console.print(line)
+        active_label = f"  ║  Active enumeration:                {active:>5}  "
+        console.print(active_label)
+        console.print("  ║  ─────────────────────────────────────────────")
+        console.print(f"  ║  Total unique:                    {total:>5}  ")
+        console.print("  ╚════════════════════════════════════════════════════════╝")
+
     console.print(
         f"\n  [bold]Total:[/bold] [bold green]{len(results.found)}[/bold green] unique subdomains  "
         f"[bold]Time:[/bold] {elapsed:.1f}s\n"
@@ -1808,6 +1842,20 @@ EXAMPLES:
                    help="Input JSON file for --validate-only mode")
     p.add_argument("--validate-output", dest="validate_output", default="",
                    help="Output directory for validation files (default: same as --output dir)")
+    # Passive intelligence
+    p.add_argument("--passive-list", dest="passive_list", default="",
+                   help="Path to ArgosDNS/passive subdomain export file (txt, csv, or json). "
+                        "Zero API requests used. "
+                        "Example: --passive-list target_export.txt")
+    p.add_argument("--argos-key", dest="argos_key", default="",
+                   help="ArgosDNS API key. COSTS API REQUESTS. "
+                        "Use --passive-list instead to preserve your request budget. "
+                        "Can also set ARGOS_API_KEY env variable.")
+    p.add_argument("--argos-max-requests", dest="argos_max_requests", type=int, default=5,
+                   help="Max ArgosDNS API requests to use per scan (default: 5). "
+                        "Set higher for large domains. Always shows cost estimate first.")
+    p.add_argument("--skip-passive", dest="skip_passive", action="store_true",
+                   help="Skip all passive sources (crt.sh + ArgosDNS). Not recommended — passive is free intel.")
     return p.parse_args()
 
 # ─── Main ────────────────────────────────────────────────────────────────────
@@ -2033,6 +2081,10 @@ def main():
         resolvers_file=getattr(args, 'resolvers_file', ''),
         profile=getattr(args, 'profile', ''),
         include_heavy=getattr(args, 'include_heavy', False),
+        passive_list=getattr(args, 'passive_list', ''),
+        argos_key=(os.environ.get("ARGOS_API_KEY") or getattr(args, 'argos_key', '')),
+        argos_max_requests=getattr(args, 'argos_max_requests', 5),
+        skip_passive=getattr(args, 'skip_passive', False),
     )
 
     # ── Apply connection profile overrides ──────────────────────────────────────
@@ -2083,14 +2135,14 @@ def main():
         )
         # Disable noisy techniques
         for t in ["cors", "vhost", "tlssni"]:
-            if t in techniques:
-                techniques.remove(t)
+            if t in cfg.techniques:
+                cfg.techniques.remove(t)
         cfg.threads = min(cfg.threads, 10)
         cfg.rate_limit = 2  # 2 qps max
 
     console.print(Panel(
         f"[bold]Target:[/bold]     [cyan]{cfg.domain}[/cyan]\n"
-        f"[bold]Techniques:[/bold] {', '.join(techniques)}\n"
+        f"[bold]Techniques:[/bold] {', '.join(cfg.techniques)}\n"
         f"[bold]Threads:[/bold]    {cfg.threads}  "
         f"[bold]Timeout:[/bold] {cfg.timeout}s  "
         f"[bold]Depth:[/bold] {cfg.depth}\n"
@@ -2103,7 +2155,7 @@ def main():
     # Handle dry run
     if cfg.dry_run:
         wordlist = load_wordlist(cfg.wordlist_path)
-        _dry_run(techniques, cfg, wordlist)
+        _dry_run(cfg.techniques, cfg, wordlist)
 
     start = time.time()
     results = ResultCollector(cfg.verbose)
@@ -2115,70 +2167,92 @@ def main():
     wc.detect()
 
     found: Set[str] = set()
+    passive_subs: Set[str] = set()
 
-    def run(name: str) -> bool:
-        return name in techniques
+    # ── PHASE 0: PASSIVE INTELLIGENCE ────────────────────────────────────────────
+    passive_source_count = 0
+    if not cfg.skip_passive:
+        console.print(
+            "\n[bold yellow]━━ PHASE 0: PASSIVE INTELLIGENCE ━━[/bold yellow]"
+        )
 
-    techniques = (
-        ALL_TECHNIQUES if args.techniques.strip().lower() == "all"
-        else [t.strip() for t in args.techniques.split(",")]
-    )
+        from core.passive_sources import PassiveAggregator
 
-    cfg = Config(
-        domain=args.domain.lower().strip(),
-        wordlist_path=args.wordlist,
-        resolvers=load_resolvers(args.resolvers, args.resolvers_file),
-        threads=args.threads,
-        timeout=args.timeout,
-        techniques=techniques,
-        ip_ranges=[r.strip() for r in args.ip_ranges.split(",") if r.strip()],
-        output=args.output,
-        depth=args.depth,
-        api_endpoint=args.api_endpoint,
-        verbose=args.verbose,
-        ports=[int(p) for p in args.ports.split(",")],
-        dry_run=False,
-        vhost_max_words=args.vhost_max_words,
-        vhost_max_ips=args.vhost_max_ips,
-        output_format=args.output_format,
-        skip_http_probe=args.skip_http_probe,
-        rate_limit=args.rate_limit,
-        sort_by=args.sort_by,
-        opsec_mode=args.opsec_mode,
-        refresh_resolvers=args.refresh_resolvers,
-        resume=args.resume,
-        skip_clean=args.skip_clean,
-        permutation_wordlist=args.permutation_wordlist,
-        annotate=args.annotate,
-        http_timeout=args.http_timeout,
-        max_rate=args.max_rate,
-        jitter=args.jitter,
-        shuffle=args.shuffle,
-        resolvers_file=args.resolvers_file,
-    )
+        passive = PassiveAggregator(cfg)
+        passive_results = asyncio.run(passive.run(cfg.domain))
+        passive_subs = passive.merge(passive_results)
+        passive.print_summary(passive_results, passive_subs)
 
-    console.print(Panel(
-        f"[bold]Target:[/bold]     [cyan]{cfg.domain}[/cyan]\n"
-        f"[bold]Techniques:[/bold] {', '.join(techniques)}\n"
-        f"[bold]Threads:[/bold]    {cfg.threads}  "
-        f"[bold]Timeout:[/bold] {cfg.timeout}s  "
-        f"[bold]Depth:[/bold] {cfg.depth}\n"
-        f"[bold]Resolvers:[/bold]  {len(cfg.resolvers)} loaded  "
-        f"[bold]IP Ranges:[/bold] {cfg.ip_ranges or 'none'}",
-        title="[bold yellow]⚡  ActiveSubEnum v1.0[/bold yellow]",
-        expand=False,
-    ))
+        # Register passive findings
+        passive_new = 0
+        for sub in passive_subs:
+            fqdn = sub if cfg.domain in sub else f"{sub}.{cfg.domain}"
+            if results.add_sync(fqdn, ["[passive-unresolved]"],
+                              "passive"):
+                found.add(fqdn)
+                passive_new += 1
 
-    start = time.time()
-    results = ResultCollector(cfg.verbose)
-    pool = ResolverPool(cfg.resolvers, cfg.timeout)
-    wordlist = load_wordlist(cfg.wordlist_path)
+        # Build smart wordlist from passive data
+        if len(passive_subs) > 50:
+            passive_prefixes: Set[str] = set()
+            for sub in passive_subs:
+                prefix = sub.replace(f".{cfg.domain}", "")
+                if prefix and "." not in prefix and len(prefix) < 30:
+                    passive_prefixes.add(prefix)
 
-    # Always run wildcard detection
-    wc = WildcardDetector(cfg.domain, pool)
-    wc.detect()
+            # Merge passive prefixes into wordlist — highest signal words first
+            original_len = len(wordlist)
+            wordlist = list(passive_prefixes) + [
+                w for w in wordlist if w not in passive_prefixes
+            ]
+            new_words = len(wordlist) - original_len
+            if new_words > 0:
+                console.print(
+                    f"  [dim]→ Added {new_words:,} words from passive "
+                    f"patterns to wordlist[/dim]"
+                )
 
-    found: Set[str] = set()
+        console.print(
+            f"  [bold green]Phase 0 done:[/bold green] "
+            f"[cyan]{passive_new:,}[/cyan] subdomains from passive sources "
+            f"(before any DNS brute force)"
+        )
+    else:
+        console.print(
+            "\n[dim]Passive intelligence skipped (--skip-passive)[/dim]"
+        )
+
+    # ── Resolve passive subdomains (Phase 0 → live IPs) ─────────────────────────
+    if passive_subs and not cfg.skip_passive:
+        console.print(
+            f"\n[bold blue][P1][/bold blue] Resolving "
+            f"{len(passive_subs):,} passive subdomains..."
+        )
+        passive_wordlist = [
+            s.replace(f".{cfg.domain}", "")
+            for s in passive_subs
+            if cfg.domain in s
+        ]
+        passive_bf = BruteForcer(cfg, pool, wc, results)
+        passive_found = passive_bf.run(passive_wordlist, label="P1")
+        found |= passive_found
+        console.print(
+            f"  [dim]→ {len(passive_found):,} passive subdomains "
+            f"confirmed live via DNS[/dim]"
+        )
+
+        # Tag NXDOMAIN passive subs as takeover candidates
+        live_fqdns = {
+            f"{w}.{cfg.domain}"
+            for w in passive_wordlist
+            if results.found.get(f"{w}.{cfg.domain}", {}).get("ips", []) != ["[passive-unresolved]"]
+        }
+        nxdomain_passive = passive_subs - live_fqdns
+        if nxdomain_passive:
+            console.print(
+                f"  [yellow][!] {len(nxdomain_passive):,} passive subs "
+                f"no longer resolve → check TAKEOVER-CANDIDATES[/yellow]"
+            )
 
     # Rate limit monitor
     rate_monitor = None
@@ -2193,7 +2267,6 @@ def main():
 
     try:
         from core.checkpoint import CheckpointManager
-        import os
         out_dir = os.path.dirname(cfg.output) or "results"
         checkpoint_manager = CheckpointManager(cfg.domain, checkpoint_dir=out_dir)
         # Check for resume
@@ -2217,7 +2290,7 @@ def main():
         pass
 
     def run(name: str) -> bool:
-        return name in techniques or "all" in techniques
+        return name in cfg.techniques or "all" in cfg.techniques
 
     # 01 — Brute Force
     if run("bruteforce"):
@@ -2304,7 +2377,13 @@ def main():
         found |= re_enum.run(found, cfg.depth)
 
     # All techniques done — final summary and save
-    print_summary(results, start)
+    # Build passive breakdown dict for summary card
+    passive_breakdown: Dict[str, int] = {}
+    if not cfg.skip_passive:
+        for source, subs in passive_results.items():
+            if subs:
+                passive_breakdown[source] = len(subs)
+    print_summary(results, start, passive_breakdown=passive_breakdown)
     save_results(results, cfg.output)
 
     # Part 12: Post-enumeration validation pipeline

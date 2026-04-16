@@ -69,6 +69,48 @@ python3 activesubenum.py --validate-only --input results.json -d target.com
 
 ---
 
+## Passive Intelligence (Phase 0 — Always Runs First)
+
+crt.sh CT logs run automatically on every scan, at no cost.
+ArgosDNS is available when you provide an export file or API key.
+
+### Option A — ArgosDNS Export File (BEST — zero API requests)
+1. Go to argosdns.io → Subdomain Search → search your target
+2. Click Export → Download the file
+3. Pass it to the tool:
+
+```bash
+python3 activesubenum.py \
+  -d target.com \
+  --passive-list target_export.txt \
+  --profile normal \
+  --fast-validate \
+  -o results/target.json \
+  --validate-output results/target/
+```
+
+### Option B — ArgosDNS API (costs requests — use sparingly)
+```bash
+python3 activesubenum.py \
+  -d target.com \
+  --argos-key YOUR_KEY \
+  --argos-max-requests 5 \
+  --profile normal \
+  --fast-validate \
+  -o results/target.json
+```
+
+### Option C — crt.sh only (always free, always runs)
+```bash
+python3 activesubenum.py \
+  -d target.com \
+  --profile normal \
+  --fast-validate \
+  -o results/target.json
+```
+
+---
+
 ## Connection Profiles
 
 | Profile  | Threads | Rate   | Jitter | Best For |
